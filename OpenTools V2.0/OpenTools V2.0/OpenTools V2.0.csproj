@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Declarations.cs" />
+    <Compile Include="Einstellungen.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
