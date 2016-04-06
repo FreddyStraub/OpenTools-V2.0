@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace OpenTools_V2._0
 {
-    public partial class frmMain : Form
+    public partial class frmToolgruppeErstellen : Form
     {
-        public frmMain()
+        public frmToolgruppeErstellen()
         {
             InitializeComponent();
+        }
+
+        private void bAbbrechen_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
