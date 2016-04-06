@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Declarations.cs" />
     <Compile Include="Einstellungen.cs" />
+    <Compile Include="frmEinstellungen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEinstellungen.Designer.cs">
+      <DependentUpon>frmEinstellungen.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Window.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="Windows.cs" />
+    <EmbeddedResource Include="frmEinstellungen.resx">
+      <DependentUpon>frmEinstellungen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

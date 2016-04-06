@@ -47,6 +47,10 @@ namespace OpenTools_V2._0
 
         }
 
-
+        public void standart()
+        {
+            path = "C:\\";
+            save();
+        }
     }
 }

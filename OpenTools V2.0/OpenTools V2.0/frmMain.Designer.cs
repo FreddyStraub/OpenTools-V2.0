@@ -85,6 +85,7 @@
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen...";
+            this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
