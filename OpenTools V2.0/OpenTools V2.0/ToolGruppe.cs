@@ -1,9 +1,11 @@
 ﻿using OpenTools_V2._0.ToolgruppenElemente;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenTools_V2._0
@@ -52,6 +54,32 @@ namespace OpenTools_V2._0
             FS.Dispose();
 
             return t;
+
+        }
+
+        /// <summary>
+        /// Startet die Toolgruppe.
+        /// </summary>
+        public void run()
+        {
+
+            foreach(Datei d in Dateien)
+            {
+                //Startet die Datei
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo(d.path);
+                p.Start();
+
+                WindowManager wm = new WindowManager();
+
+                Thread.Sleep(150);
+
+
+                //Schiebt das Fenster an die passende Position
+                wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winPos.y);
+
+
+            }
 
         }
 

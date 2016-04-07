@@ -47,6 +47,7 @@
             this.listToolgruppen.Name = "listToolgruppen";
             this.listToolgruppen.Size = new System.Drawing.Size(342, 199);
             this.listToolgruppen.TabIndex = 1;
+            this.listToolgruppen.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listToolgruppen_MouseDoubleClick);
             // 
             // menuStrip1
             // 
@@ -67,6 +68,7 @@
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
             this.neuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.neuToolStripMenuItem.Text = "Neu...";
+            this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // bearbeiToolStripMenuItem
             // 
