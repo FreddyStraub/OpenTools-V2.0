@@ -62,8 +62,9 @@ namespace OpenTools_V2._0
         /// </summary>
         public void run()
         {
+            #region Dateien
 
-            foreach(Datei d in Dateien)
+            foreach (Datei d in Dateien)
             {
                 //Startet die Datei
                 Process p = new Process();
@@ -80,6 +81,28 @@ namespace OpenTools_V2._0
 
 
             }
+
+            #endregion
+            #region Ordner
+            foreach (Ordner o in Ordner)
+            {
+                //Startet den Ordner
+                WindowManager wm = new WindowManager();
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo(o.path);
+                p.Start();
+
+                Thread.Sleep(150);
+
+                
+                IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
+                
+                //Schiebt das Fenster an die passende Position
+                wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
+                
+            }
+
+            #endregion
 
         }
 

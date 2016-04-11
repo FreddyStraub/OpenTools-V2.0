@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace OpenTools_V2._0
         ToolGruppe toolgruppe = new ToolGruppe();
 
         public List<Datei> Dateien = new List<Datei>();
+        public List<Ordner> Ordner = new List<Ordner>();
 
         public frmToolgruppeErstellen()
         {
@@ -35,27 +37,37 @@ namespace OpenTools_V2._0
         {
             einstellungen = einstellungen.load();
         }
+        private void bFertig_Click(object sender, EventArgs e)
+        {
+
+            toolgruppe.Dateien = Dateien;
+            toolgruppe.Ordner = Ordner;
+
+
+            toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+
+        }
 
         #region Datei
-        Process p;
+        Process processDateien;
         /// <summary>
         /// Fügt eine Datei zur Toolgruppe hinzu.
         /// </summary>
         /// <param name="path"></param>
         private void dateiHinzufügen(string path)
         {
-                p = new Process();
-                p.StartInfo = new ProcessStartInfo(path);
-                p.EnableRaisingEvents = true;
+            processDateien = new Process();
+            processDateien.StartInfo = new ProcessStartInfo(path);
+            processDateien.EnableRaisingEvents = true;
 
-                p.Start();
+            processDateien.Start();
 
-            if(MessageBox.Show("Fenster positioniert?", "OpenTools V2.0", MessageBoxButtons.OK,MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Fenster positioniert?", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 ProcessListDemo.Windows win = new ProcessListDemo.Windows();
 
                 //Neue Datei erstellen und Pfad mitgeben 
-                Datei d = new Datei(openFileDialog1.FileName);
+                Datei d = new Datei(ofdDatei.FileName);
 
                 Dateien.Add(d);
                 listDateien.Items.Add(d.name);
@@ -64,7 +76,7 @@ namespace OpenTools_V2._0
                 //Window settings hinzufügen;
                 foreach (ProcessListDemo.Window w in win.lstWindows)
                 {
-                    if (w.winHandle == p.MainWindowHandle)
+                    if (w.winHandle == processDateien.MainWindowHandle)
                     {
                         //Fenstereigenschaften werden an Datei übergeben
                         d.WindowSettings = w;
@@ -73,7 +85,7 @@ namespace OpenTools_V2._0
 
             }
 
-            p.CloseMainWindow();
+            processDateien.CloseMainWindow();
 
 
         }
@@ -83,10 +95,10 @@ namespace OpenTools_V2._0
         private void dateienLöschen()
         {
 
-            if(listDateien.SelectedItems.Count != 0)
+            if (listDateien.SelectedItems.Count != 0)
             {
 
-                foreach(string s in listDateien.SelectedItems)
+                foreach (string s in listDateien.SelectedItems)
                 {
 
                     Dateien.Remove(Dateien[listDateien.Items.IndexOf(s)]);
@@ -98,37 +110,127 @@ namespace OpenTools_V2._0
 
         }
 
+        //Hinzufügen
         private void bDateiHinzufügen_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
-                dateiHinzufügen(openFileDialog1.FileName);
+            if (ofdDatei.ShowDialog() == DialogResult.OK)
+                dateiHinzufügen(ofdDatei.FileName);
 
         }
         private void hinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                dateiHinzufügen(openFileDialog1.FileName);
+            if (ofdDatei.ShowDialog() == DialogResult.OK)
+                dateiHinzufügen(ofdDatei.FileName);
 
         }
 
+        //Löschen
         private void bDateiEntfernen_Click(object sender, EventArgs e)
         {
             dateienLöschen();
         }
-        private void bOrdnerLöschen_Click(object sender, EventArgs e)
+        private void entfernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dateienLöschen();
         }
 
         #endregion
+        #region Ordner
 
-        private void bFertig_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Fügt einen Ordner hinzu.
+        /// </summary>
+        /// <param name="path"></param>
+        private void ordnerHinzufügen(string path)
         {
+            IntPtr Handle = new IntPtr();
+            WindowManager wm = new WindowManager();
+            Handle = wm.OpenFolderGetHandle(path);
 
-            toolgruppe.Dateien = Dateien;
+            if (MessageBox.Show("Fenster positioniert?", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                ProcessListDemo.Windows win = new ProcessListDemo.Windows();
 
-            toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+                //Neuen Ordner erstellen und Pfad mitgeben 
+                Ordner o = new Ordner(path);
+
+                
+                //Window settings hinzufügen;
+           
+                //    string xs = "";
+
+                foreach (ProcessListDemo.Window w in win.lstWindows)
+                {
+
+       
+                   // xs += "\n" + w.winTitle + "\n" + w.winHandle;
+
+                    if (w.winHandle == Handle)
+                    {
+                        //Fenstereigenschaften werden an Ordner übergeben
+                        o.WindowSettings = w;
+
+
+                    }
+                }
+                Ordner.Add(o);
+                listOrdner.Items.Add(o.name);
+
+          // MessageBox.Show(xs);
+
+            }
 
         }
+
+        /// <summary>
+        /// Löscht die ausgewählten Ordner
+        /// </summary>
+        private void ordnerLöschen()
+        {
+
+            if (listOrdner.SelectedItems.Count != 0)
+            {
+
+                foreach (string s in listOrdner.SelectedItems)
+                {
+                    Ordner.Remove(Ordner[listOrdner.Items.IndexOf(s)]);
+                    listOrdner.Items.Remove(s);
+
+                }
+
+            }
+
+        }
+
+        //Löschen
+        private void bOrdnerLöschen_Click(object sender, EventArgs e)
+        {
+            ordnerLöschen();
+        }
+        private void entfernenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ordnerLöschen();
+        }
+
+        //Hinzufügen
+
+        private void bOrdnerHinzufügen_Click(object sender, EventArgs e)
+        {
+            if(fbdOrdner.ShowDialog() == DialogResult.OK)
+            {
+                ordnerHinzufügen(fbdOrdner.SelectedPath);
+            }
+        }
+        private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (fbdOrdner.ShowDialog() == DialogResult.OK)
+            {
+                ordnerHinzufügen(fbdOrdner.SelectedPath);
+            }
+
+        }
+
+        #endregion
     }
 }

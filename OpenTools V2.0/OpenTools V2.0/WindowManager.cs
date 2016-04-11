@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenTools_V2._0
 {
     class WindowManager
     {
+        #region Move
         [DllImport("user32.dll", SetLastError = true)]
         static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
 
@@ -161,6 +164,14 @@ namespace OpenTools_V2._0
 
         ProcessListDemo.Windows windows = new ProcessListDemo.Windows();
 
+        /// <summary>
+        /// Positioniert Fenster
+        /// </summary>
+        /// <param name="Handle"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="cx"></param>
+        /// <param name="cy"></param>
         public void moveWindow(IntPtr Handle, int x, int y, int cx, int cy)
         {
 
@@ -168,27 +179,61 @@ namespace OpenTools_V2._0
 
         }
 
-        public List<string> getWindowNames(bool everything)
+        #endregion
+
+        #region Ordner
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+
+        /// <summary>
+        /// Öffnet einen Ordner und gibt den Window-Handle zurück
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public IntPtr OpenFolderGetHandle(string path)
         {
-            List<string> windownames = new List<string>();
+            path = path.Replace("/", "\\");
+            if (!path.EndsWith("\\"))
+            {
+                path += "\\";
+            }
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = path;
+                p.Start();
+            }
 
-           
+            Thread.Sleep(1000);
 
+            IntPtr handle;
 
-                foreach (ProcessListDemo.Window w in windows.lstWindows)
-                {
+            handle = getFolderHandle(path);
 
-                if(w.winVisible != everything)
-                    windownames.Add(w.winTitle);
+            return handle;
 
-                }
-
-                return windownames;
-        
         }
 
+        /// <summary>
+        /// Gibt den Window-Handle eines Ordners zurück --> wenn Ordner geöffnet
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public IntPtr getFolderHandle(string path)
+        {
+            path = path.Replace("/", "\\");
+            if (path.EndsWith("\\"))
+            {
+                path = path.Substring(0, path.Length - 1);
+            }
+            IntPtr handle = new IntPtr();
+            string folderName = System.IO.Path.GetFileNameWithoutExtension(path) + System.IO.Path.GetExtension(path);
+            handle = FindWindow(null, folderName);
 
+            return handle;
 
+        }
+        #endregion
 
     }
 }
