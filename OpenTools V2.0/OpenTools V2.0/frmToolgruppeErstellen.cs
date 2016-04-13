@@ -154,17 +154,16 @@ namespace OpenTools_V2._0
 
                 //Neuen Ordner erstellen und Pfad mitgeben 
                 Ordner o = new Ordner(path);
-
+                
+                //o.WindowTitel = wm.DireWindowName;
                 
                 //Window settings hinzufügen;
            
-                //    string xs = "";
 
                 foreach (ProcessListDemo.Window w in win.lstWindows)
                 {
 
        
-                   // xs += "\n" + w.winTitle + "\n" + w.winHandle;
 
                     if (w.winHandle == Handle)
                     {
@@ -177,7 +176,6 @@ namespace OpenTools_V2._0
                 Ordner.Add(o);
                 listOrdner.Items.Add(o.name);
 
-          // MessageBox.Show(xs);
 
             }
 

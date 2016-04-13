@@ -94,12 +94,12 @@ namespace OpenTools_V2._0
 
                 Thread.Sleep(150);
 
-                
+
                 IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
-                
+
                 //Schiebt das Fenster an die passende Position
                 wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
-                
+
             }
 
             #endregion

@@ -185,6 +185,7 @@ namespace OpenTools_V2._0
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
+        public string DireWindowName { get; set; }
 
         /// <summary>
         /// Öffnet einen Ordner und gibt den Window-Handle zurück
@@ -198,17 +199,44 @@ namespace OpenTools_V2._0
             {
                 path += "\\";
             }
-            using (Process p = new Process())
+            Process mp = new Process();
+           
+                mp.StartInfo.FileName = path;
+                       
+                mp.Start();
+            
+            Thread.Sleep(150);
+
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = path;
+
+            foreach(Process p in Process.GetProcesses())
             {
-                p.StartInfo.FileName = path;
-                p.Start();
+
+                if(p == mp)
+                {
+
+                    DireWindowName = p.MainWindowTitle;
+
+                }
+
             }
+            IntPtr handle = getFolderHandle(path);
 
-            Thread.Sleep(1000);
+            ProcessListDemo.Windows windows = new ProcessListDemo.Windows();
 
-            IntPtr handle;
+            //foreach (ProcessListDemo.Window w in windows.lstWindows)
+            //{
 
-            handle = getFolderHandle(path);
+            //    if (w.winHandle == handle)
+            //    {
+
+            //        DireWindowName = w.winTitle;
+
+            //    }
+
+            //    }
+
 
             return handle;
 
@@ -233,6 +261,7 @@ namespace OpenTools_V2._0
             return handle;
 
         }
+
         #endregion
 
     }

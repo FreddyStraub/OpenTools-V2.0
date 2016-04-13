@@ -9,8 +9,9 @@ namespace OpenTools_V2._0.ToolgruppenElemente
     [Serializable]
     public class Ordner
     {
-        public string path { get; set; }
-        public string name { get; private set; }
+        public string path { get; set; } //Pfad zum Ordner
+        public string name { get; private set; } //Name des Ordners
+       // public string WindowTitel { get; set; } //Window Titel des Explorerfensters
 
         public ProcessListDemo.Window WindowSettings { get; set; }
 
