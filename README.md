@@ -1,4 +1,4 @@
-# OpenTools-V2.0
+# OpenTools V2.0
 OpenTools V2.0 ist die 2.Version von OpenTools.
 OpenTools ist ein Programm mit dem man sich sogenannte Toolgruppen erstellen kann. Diese Toolgruppen bestehen aus Dateien/Programmen, Ordnern und Internetseiten.
 Nach dem erstellen und befüllen der Toolgruppe wird sie dann im Main-Fenster angezeigt. 
