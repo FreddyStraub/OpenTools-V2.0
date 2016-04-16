@@ -64,6 +64,8 @@ namespace OpenTools_V2._0
         {
             #region Dateien
 
+            ProcessListDemo.Window No = new ProcessListDemo.Window("", IntPtr.Zero, "", false, new ProcessListDemo.Declarations.Point(0, 0),
+                            new ProcessListDemo.Declarations.Point(0, 0), ProcessListDemo.Window.WinType.Normal);
             foreach (Datei d in Dateien)
             {
                 //Startet die Datei
@@ -77,8 +79,10 @@ namespace OpenTools_V2._0
 
 
                 //Schiebt das Fenster an die passende Position
-                wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winPos.y);
-
+                try {
+                    wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winPos.y);
+                }
+                catch { }
 
             }
 

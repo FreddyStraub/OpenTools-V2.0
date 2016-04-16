@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +15,19 @@ namespace OpenTools_V2._0
 {
     public partial class frmMain : Form
     {
+
+
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        public frmMain(string toolgruppePath)
+        {
+            ToolGruppe t = new ToolGruppe();
+            t = t.load(toolgruppePath);
+            t.run();
+
         }
 
         Einstellungen einstellungen = new Einstellungen();
@@ -31,11 +43,16 @@ namespace OpenTools_V2._0
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+
+
+
             einstellungen = einstellungen.load();
 
             OrdnerVerwaltung();
 
             loadToolgruppen();
+
+
         }
 
         /// <summary>
@@ -69,6 +86,7 @@ namespace OpenTools_V2._0
             }
 
         }
+
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEinstellungen frmEinstellungen = new frmEinstellungen();
@@ -96,5 +114,7 @@ namespace OpenTools_V2._0
             }
 
         }
+
+
     }
 }

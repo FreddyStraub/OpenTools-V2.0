@@ -69,24 +69,38 @@ namespace OpenTools_V2._0
                 //Neue Datei erstellen und Pfad mitgeben 
                 Datei d = new Datei(ofdDatei.FileName);
 
-                Dateien.Add(d);
-                listDateien.Items.Add(d.name);
-
 
                 //Window settings hinzufügen;
                 foreach (ProcessListDemo.Window w in win.lstWindows)
                 {
-                    if (w.winHandle == processDateien.MainWindowHandle)
+
+                    try {
+
+                        if (w.winHandle == processDateien.MainWindowHandle)
+                        {
+                            //Fenstereigenschaften werden an Datei übergeben
+                            d.WindowSettings = w;
+                            
+                        }
+                    }catch                    
                     {
-                        //Fenstereigenschaften werden an Datei übergeben
-                        d.WindowSettings = w;
+                        //Neu Windowsettings (Wenn --> Nicht vorhanden)
+                        d.WindowSettings = new ProcessListDemo.Window("", IntPtr.Zero, "", false, new ProcessListDemo.Declarations.Point(0, 0), 
+                            new ProcessListDemo.Declarations.Point(0, 0),ProcessListDemo.Window.WinType.Normal);
+
                     }
                 }
+                
+                Dateien.Add(d);
+                listDateien.Items.Add(d.name);
 
             }
 
-            processDateien.CloseMainWindow();
-
+            //TODO: Eventuell Ändern.
+            try {
+                processDateien.CloseMainWindow();
+            }
+            catch { }
 
         }
         /// <summary>
@@ -135,6 +149,7 @@ namespace OpenTools_V2._0
         }
 
         #endregion
+
         #region Ordner
 
 

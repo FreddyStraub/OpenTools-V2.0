@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDialoge\frmDateiHinzufügen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddDialoge\frmDateiHinzufügen.Designer.cs">
-      <DependentUpon>frmDateiHinzufügen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Declarations.cs" />
     <Compile Include="Einstellungen.cs" />
     <Compile Include="frmEinstellungen.cs">
@@ -81,9 +75,6 @@
     <Compile Include="Window.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="Windows.cs" />
-    <EmbeddedResource Include="AddDialoge\frmDateiHinzufügen.resx">
-      <DependentUpon>frmDateiHinzufügen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmEinstellungen.resx">
       <DependentUpon>frmEinstellungen.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -115,7 +107,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolgruppeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AddDialoge\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
