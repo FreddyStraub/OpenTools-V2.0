@@ -1,4 +1,4 @@
-# OpenTools-V2.0
+# OpenTools V2.0
 OpenTools V2.0 ist die 2.Version von OpenTools.
 OpenTools ist ein Programm mit dem man sich sogenannte Toolgruppen erstellen kann. Diese Toolgruppen bestehen aus Dateien/Programmen, Ordnern und Internetseiten.
 Nach dem erstellen und befüllen der Toolgruppe wird sie dann im Main-Fenster angezeigt. 
@@ -9,5 +9,7 @@ OpenTools V1.0 Tutorial --> https://www.youtube.com/watch?v=o__k5B13UwE
 
 OpenTools V2.0 beinhaltet die gleichen Features wie V1.0
 Der große Unterschied dabei ist, dass man nun auch die Möglichkeit hat zu bestimmen welches Fenster an welcher stelle aufgehen soll!
+
+Trelloboard --> https://trello.com/b/8yiQB5hX/opentools-v2-0 (Organisation der Ideen etc.)
 
 Tutorial folgt sobald das Tool fertig is xD
