@@ -22,6 +22,7 @@ namespace OpenTools_V2._0
 
         public List<Datei> Dateien = new List<Datei>();
         public List<Ordner> Ordner = new List<Ordner>();
+        public List<Internetseite> Internetseiten = new List<Internetseite>();
 
         public frmToolgruppeErstellen()
         {
@@ -42,12 +43,14 @@ namespace OpenTools_V2._0
 
             toolgruppe.Dateien = Dateien;
             toolgruppe.Ordner = Ordner;
-
+            toolgruppe.Internetseiten = Internetseiten;
 
             toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
 
         }
 
+
+        //TODO: MultiExtend Delete
         #region Datei
         Process processDateien;
         /// <summary>
@@ -84,9 +87,8 @@ namespace OpenTools_V2._0
                         }
                     }catch                    
                     {
-                        //Neu Windowsettings (Wenn --> Nicht vorhanden)
-                        d.WindowSettings = new ProcessListDemo.Window("", IntPtr.Zero, "", false, new ProcessListDemo.Declarations.Point(0, 0), 
-                            new ProcessListDemo.Declarations.Point(0, 0),ProcessListDemo.Window.WinType.Normal);
+                        //TODO: Vielleicht gibts ja ne Lösung für die Fensterpositionen xD
+
 
                     }
                 }
@@ -112,14 +114,18 @@ namespace OpenTools_V2._0
             if (listDateien.SelectedItems.Count != 0)
             {
 
-                foreach (string s in listDateien.SelectedItems)
+                int n = 0;
+                while(listDateien.SelectedItems.Count != 0)
                 {
 
-                    Dateien.Remove(Dateien[listDateien.Items.IndexOf(s)]);
+                    string s = listDateien.SelectedItems[n].ToString();
+                    Dateien.Remove((Dateien[listDateien.Items.IndexOf(s)]));
                     listDateien.Items.Remove(s);
 
-                }
 
+                    n++;
+
+                }
             }
 
         }
@@ -205,14 +211,28 @@ namespace OpenTools_V2._0
             if (listOrdner.SelectedItems.Count != 0)
             {
 
-                foreach (string s in listOrdner.SelectedItems)
+                //foreach (string s in listOrdner.SelectedItems)
+                //{
+                //    Ordner.Remove(Ordner[listOrdner.Items.IndexOf(s)]);
+                //    listOrdner.Items.Remove(s);
+
+                //}
+                int n = 0;
+                while (listOrdner.SelectedItems.Count != 0)
                 {
-                    Ordner.Remove(Ordner[listOrdner.Items.IndexOf(s)]);
+
+                    string s = listOrdner.SelectedItems[n].ToString();
+                    Ordner.Remove((Ordner[listOrdner.Items.IndexOf(s)]));
                     listOrdner.Items.Remove(s);
+
+                    n++;
 
                 }
 
             }
+
+
+
 
         }
 
@@ -242,6 +262,51 @@ namespace OpenTools_V2._0
                 ordnerHinzufügen(fbdOrdner.SelectedPath);
             }
 
+        }
+
+        #endregion
+
+        #region Internetseite
+
+        private void hinzufügenToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            AddDialoge.frmAddInternetseite frmAddInternetseite = new AddDialoge.frmAddInternetseite();
+            frmAddInternetseite.ShowDialog();
+
+            if (frmAddInternetseite.URL != null)
+            {
+                Internetseite i = new Internetseite();
+                i.url = frmAddInternetseite.URL;
+
+                Internetseiten.Add(i);
+                listInternetseiten.Items.Add(i.url);
+
+            }
+        }
+        /// <summary>
+        /// Löscht die ausgewählten Internetseiten.
+        /// </summary>
+        private void internetseiteLöschen()
+        {
+
+            if (listInternetseiten.SelectedItems.Count != 0)
+            {
+
+                foreach (string s in listInternetseiten.SelectedItems)
+                {
+
+                    Internetseiten.Remove(Internetseiten[listInternetseiten.Items.IndexOf(s)]);
+                    listInternetseiten.Items.Remove(s);
+
+                }
+
+            }
+
+        }
+
+        private void entfernenToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            internetseiteLöschen();
         }
 
         #endregion

@@ -128,7 +128,7 @@
             // entfernenToolStripMenuItem
             // 
             this.entfernenToolStripMenuItem.Name = "entfernenToolStripMenuItem";
-            this.entfernenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.entfernenToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.entfernenToolStripMenuItem.Text = "Entfernen";
             this.entfernenToolStripMenuItem.Click += new System.EventHandler(this.entfernenToolStripMenuItem_Click);
             // 
@@ -156,19 +156,19 @@
             this.hinzufügenToolStripMenuItem1,
             this.entfernenToolStripMenuItem1});
             this.cmsOrdner.Name = "cmsDateien";
-            this.cmsOrdner.Size = new System.Drawing.Size(153, 70);
+            this.cmsOrdner.Size = new System.Drawing.Size(137, 48);
             // 
             // hinzufügenToolStripMenuItem1
             // 
             this.hinzufügenToolStripMenuItem1.Name = "hinzufügenToolStripMenuItem1";
-            this.hinzufügenToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.hinzufügenToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.hinzufügenToolStripMenuItem1.Text = "Hinzufügen";
             this.hinzufügenToolStripMenuItem1.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem1_Click);
             // 
             // entfernenToolStripMenuItem1
             // 
             this.entfernenToolStripMenuItem1.Name = "entfernenToolStripMenuItem1";
-            this.entfernenToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.entfernenToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.entfernenToolStripMenuItem1.Text = "Entfernen";
             this.entfernenToolStripMenuItem1.Click += new System.EventHandler(this.entfernenToolStripMenuItem1_Click);
             // 
@@ -192,14 +192,16 @@
             // hinzufügenToolStripMenuItem2
             // 
             this.hinzufügenToolStripMenuItem2.Name = "hinzufügenToolStripMenuItem2";
-            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
+            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.hinzufügenToolStripMenuItem2.Text = "Hinzufügen";
+            this.hinzufügenToolStripMenuItem2.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem2_Click);
             // 
             // entfernenToolStripMenuItem2
             // 
             this.entfernenToolStripMenuItem2.Name = "entfernenToolStripMenuItem2";
-            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
+            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.entfernenToolStripMenuItem2.Text = "Entfernen";
+            this.entfernenToolStripMenuItem2.Click += new System.EventHandler(this.entfernenToolStripMenuItem2_Click);
             // 
             // lbOrdner
             // 

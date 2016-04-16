@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDialoge\frmAddInternetseite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDialoge\frmAddInternetseite.Designer.cs">
+      <DependentUpon>frmAddInternetseite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Declarations.cs" />
     <Compile Include="Einstellungen.cs" />
     <Compile Include="frmEinstellungen.cs">
@@ -75,6 +81,9 @@
     <Compile Include="Window.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="Windows.cs" />
+    <EmbeddedResource Include="AddDialoge\frmAddInternetseite.resx">
+      <DependentUpon>frmAddInternetseite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEinstellungen.resx">
       <DependentUpon>frmEinstellungen.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,9 +122,7 @@
   <ItemGroup>
     <None Include="Resources\ToolgruppeIcon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AddDialoge\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

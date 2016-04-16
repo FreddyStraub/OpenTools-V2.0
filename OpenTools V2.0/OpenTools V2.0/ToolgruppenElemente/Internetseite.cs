@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OpenTools_V2._0.ToolgruppenElemente
 {
     [Serializable]
-    class Internetseite
+    public class Internetseite
     {
         public string url { get; set; }
 
