@@ -78,7 +78,7 @@ namespace OpenTools_V2._0
 
                 //Schiebt das Fenster an die passende Position
                 try {
-                    wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winPos.y);
+                    wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winSize.y);
                 }
                 catch { }
 

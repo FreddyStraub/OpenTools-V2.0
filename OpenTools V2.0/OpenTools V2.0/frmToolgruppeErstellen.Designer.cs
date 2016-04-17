@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmToolgruppeErstellen));
             this.bFertig = new System.Windows.Forms.Button();
             this.bAbbrechen = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -109,6 +110,7 @@
             this.listDateien.Name = "listDateien";
             this.listDateien.Size = new System.Drawing.Size(213, 212);
             this.listDateien.TabIndex = 4;
+            this.listDateien.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listDateien_MouseDoubleClick);
             // 
             // cmsDateien
             // 
@@ -192,14 +194,14 @@
             // hinzufügenToolStripMenuItem2
             // 
             this.hinzufügenToolStripMenuItem2.Name = "hinzufügenToolStripMenuItem2";
-            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
             this.hinzufügenToolStripMenuItem2.Text = "Hinzufügen";
             this.hinzufügenToolStripMenuItem2.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem2_Click);
             // 
             // entfernenToolStripMenuItem2
             // 
             this.entfernenToolStripMenuItem2.Name = "entfernenToolStripMenuItem2";
-            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
             this.entfernenToolStripMenuItem2.Text = "Entfernen";
             this.entfernenToolStripMenuItem2.Click += new System.EventHandler(this.entfernenToolStripMenuItem2_Click);
             // 
@@ -315,6 +317,8 @@
             this.Controls.Add(this.bAbbrechen);
             this.Controls.Add(this.bFertig);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmToolgruppeErstellen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0 - Toolgruppe erstellen";

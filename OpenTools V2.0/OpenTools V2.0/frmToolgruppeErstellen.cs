@@ -41,7 +41,7 @@ namespace OpenTools_V2._0
         private void bFertig_Click(object sender, EventArgs e)
         {
 
-            if (System.IO.File.Exists(einstellungen.path +  textBox1.Text + ".tg"))
+            if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" +textBox1.Text + ".tg"))
             {
 
                 //Toolgruppe nicht vorhanden --> Erstellen
@@ -342,5 +342,13 @@ namespace OpenTools_V2._0
         }
 
         #endregion
+
+        private void listDateien_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            Datei d = Dateien[(listDateien.Items.IndexOf(listDateien.SelectedItem))];
+            Process.Start(d.path);
+            
+        }
     }
 }
