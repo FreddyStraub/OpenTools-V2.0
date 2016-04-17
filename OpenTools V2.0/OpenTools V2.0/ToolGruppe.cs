@@ -85,6 +85,7 @@ namespace OpenTools_V2._0
             }
 
             #endregion
+
             #region Ordner
             foreach (Ordner o in Ordner)
             {
@@ -106,12 +107,13 @@ namespace OpenTools_V2._0
 
             #endregion
 
+            #region Inernetseite
             foreach (Internetseite i in Internetseiten)
             {
                 Process.Start(i.url);
             }
-
-            }
-
+            #endregion
         }
+
+    }
 }

@@ -41,16 +41,35 @@ namespace OpenTools_V2._0
         private void bFertig_Click(object sender, EventArgs e)
         {
 
-            toolgruppe.Dateien = Dateien;
-            toolgruppe.Ordner = Ordner;
-            toolgruppe.Internetseiten = Internetseiten;
+            if (System.IO.File.Exists(einstellungen.path +  textBox1.Text + ".tg"))
+            {
 
-            toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+                //Toolgruppe nicht vorhanden --> Erstellen
 
+                toolgruppe.Dateien = Dateien;
+                toolgruppe.Ordner = Ordner;
+                toolgruppe.Internetseiten = Internetseiten;
+
+                toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+
+            }
+            else
+            {
+
+                //Toolgruppe bereits vorhanden:
+
+                MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.None;
+                textBox1.Select();
+                textBox1.SelectionStart = 0;
+                textBox1.SelectionLength = textBox1.Text.Length;
+
+            }
         }
 
 
         //TODO: MultiExtend Delete
+
         #region Datei
         Process processDateien;
         /// <summary>
@@ -63,41 +82,54 @@ namespace OpenTools_V2._0
             processDateien.StartInfo = new ProcessStartInfo(path);
             processDateien.EnableRaisingEvents = true;
 
-            processDateien.Start();
+            try {
 
-            if (MessageBox.Show("Fenster positioniert?", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                ProcessListDemo.Windows win = new ProcessListDemo.Windows();
+                processDateien.Start();
 
-                //Neue Datei erstellen und Pfad mitgeben 
-                Datei d = new Datei(ofdDatei.FileName);
-
-
-                //Window settings hinzufügen;
-                foreach (ProcessListDemo.Window w in win.lstWindows)
+                if (MessageBox.Show("Fenster positioniert?", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    ProcessListDemo.Windows win = new ProcessListDemo.Windows();
 
-                    try {
+                    //Neue Datei erstellen und Pfad mitgeben 
+                    Datei d = new Datei(ofdDatei.FileName);
 
-                        if (w.winHandle == processDateien.MainWindowHandle)
-                        {
-                            //Fenstereigenschaften werden an Datei übergeben
-                            d.WindowSettings = w;
-                            
-                        }
-                    }catch                    
+
+                    //Window settings hinzufügen;
+                    foreach (ProcessListDemo.Window w in win.lstWindows)
                     {
-                        //TODO: Vielleicht gibts ja ne Lösung für die Fensterpositionen xD
+
+                        try {
+
+                            if (w.winHandle == processDateien.MainWindowHandle)
+                            {
+                                //Fenstereigenschaften werden an Datei übergeben
+                                d.WindowSettings = w;
+
+                            }
+                        } catch
+                        {
+                            //TODO: Vielleicht gibts ja ne Lösung für die Fensterpositionen xD
 
 
+                        }
                     }
+
+                    Dateien.Add(d);
+                    listDateien.Items.Add(d.name);
+
                 }
-                
-                Dateien.Add(d);
-                listDateien.Items.Add(d.name);
 
             }
+            catch
+            {
 
+                MessageBox.Show(System.IO.Path.GetFileNameWithoutExtension(path) + 
+                    System.IO.Path.GetExtension(path) + 
+                    " konnte nicht geöffnet werden! Überprüfe den Pfad oder das Programm mit dem die Datei geöffnet wird!", 
+                    "Datei nicht kompatibel!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
             //TODO: Eventuell Ändern.
             try {
                 processDateien.CloseMainWindow();
