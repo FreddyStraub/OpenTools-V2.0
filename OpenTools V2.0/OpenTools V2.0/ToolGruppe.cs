@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OpenTools_V2._0
 {
@@ -66,22 +67,28 @@ namespace OpenTools_V2._0
 
             foreach (Datei d in Dateien)
             {
-                //Startet die Datei
-                Process p = new Process();
-                p.StartInfo = new ProcessStartInfo(d.path);
-                p.Start();
-
-                WindowManager wm = new WindowManager();
-
-                Thread.Sleep(150);
-
-
-                //Schiebt das Fenster an die passende Position
                 try {
-                    wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winSize.y);
-                }
-                catch { }
+                    //Startet die Datei
+                    Process p = new Process();
+                    p.StartInfo = new ProcessStartInfo(d.path);
+                    p.Start();
 
+                    WindowManager wm = new WindowManager();
+
+                    Thread.Sleep(150);
+
+
+                    //Schiebt das Fenster an die passende Position
+                    try {
+                        wm.moveWindow(p.MainWindowHandle, d.WindowSettings.winPos.x, d.WindowSettings.winPos.y, d.WindowSettings.winSize.x, d.WindowSettings.winSize.y);
+                    }
+                    catch { }
+
+                }catch{
+
+                    MessageBox.Show("Die Datei " + d.path + " konnte nicht gestartet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
 
             #endregion
@@ -89,20 +96,29 @@ namespace OpenTools_V2._0
             #region Ordner
             foreach (Ordner o in Ordner)
             {
-                //Startet den Ordner
-                WindowManager wm = new WindowManager();
-                Process p = new Process();
-                p.StartInfo = new ProcessStartInfo(o.path);
-                p.Start();
+                try {
+                    //Startet den Ordner
+                    WindowManager wm = new WindowManager();
+                    Process p = new Process();
+                    p.StartInfo = new ProcessStartInfo(o.path);
+                    p.Start();
 
-                Thread.Sleep(150);
+                    Thread.Sleep(150);
 
 
-                IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
+                    IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
 
-                //Schiebt das Fenster an die passende Position
-                wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
+                    //Schiebt das Fenster an die passende Position
+                    wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
 
+                }
+                catch
+                {
+
+                    MessageBox.Show("Der Ordner " + o.path + " konnte nicht geöffnet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                }
             }
 
             #endregion
@@ -110,7 +126,14 @@ namespace OpenTools_V2._0
             #region Inernetseite
             foreach (Internetseite i in Internetseiten)
             {
-                Process.Start(i.url);
+                try {
+                    Process.Start(i.url);
+                }
+                catch
+                {
+                    MessageBox.Show("Die Internetseite " + i.url + " konnte nicht gestartet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
             #endregion
         }

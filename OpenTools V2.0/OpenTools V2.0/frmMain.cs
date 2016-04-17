@@ -25,8 +25,7 @@ namespace OpenTools_V2._0
         public frmMain(string toolgruppePath)
         {
             InitializeComponent();
-
-
+            
             ToolGruppe t = new ToolGruppe();
             t = t.load(toolgruppePath);
             t.run();

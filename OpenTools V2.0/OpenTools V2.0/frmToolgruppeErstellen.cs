@@ -343,12 +343,52 @@ namespace OpenTools_V2._0
 
         #endregion
 
+
+
         private void listDateien_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (listDateien.SelectedItems.Count != 0)
+            {
+                try {
+                    Datei d = Dateien[(listDateien.Items.IndexOf(listDateien.SelectedItem))];
+                    Process.Start(d.path);
+                }catch (Exception ex)
+                {
+                    MessageBox.Show("Die Datei konnte nicht geöffnet werden!\n\nFehler:\n " + ex.ToString(), "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-            Datei d = Dateien[(listDateien.Items.IndexOf(listDateien.SelectedItem))];
-            Process.Start(d.path);
-            
+        private void listOrdner_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listOrdner.SelectedItems.Count != 0)
+            {
+                try {
+                    Ordner o = Ordner[(listOrdner.Items.IndexOf(listOrdner.SelectedItem))];
+                    Process.Start(o.path);
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("Der Ordner konnte nich geöffnet werden!\n\nFehler:\n" + ex.ToString(), "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+
+        }
+
+        private void listInternetseiten_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listInternetseiten.SelectedItems.Count != 0)
+            {
+                try {
+                    Internetseite i = Internetseiten[(listInternetseiten.Items.IndexOf(listInternetseiten.SelectedItem))];
+                    Process.Start(i.url);
+                }catch{
+
+                    MessageBox.Show("URL konnte nicht geöffnet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 }

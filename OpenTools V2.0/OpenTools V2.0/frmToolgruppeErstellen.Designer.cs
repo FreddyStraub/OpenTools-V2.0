@@ -151,6 +151,7 @@
             this.listOrdner.Name = "listOrdner";
             this.listOrdner.Size = new System.Drawing.Size(213, 212);
             this.listOrdner.TabIndex = 6;
+            this.listOrdner.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listOrdner_MouseDoubleClick);
             // 
             // cmsOrdner
             // 
@@ -182,6 +183,7 @@
             this.listInternetseiten.Name = "listInternetseiten";
             this.listInternetseiten.Size = new System.Drawing.Size(213, 212);
             this.listInternetseiten.TabIndex = 7;
+            this.listInternetseiten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listInternetseiten_MouseDoubleClick);
             // 
             // cmsInternetseiten
             // 
