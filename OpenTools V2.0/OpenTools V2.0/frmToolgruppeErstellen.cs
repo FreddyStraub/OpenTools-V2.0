@@ -91,7 +91,7 @@ namespace OpenTools_V2._0
                     ProcessListDemo.Windows win = new ProcessListDemo.Windows();
 
                     //Neue Datei erstellen und Pfad mitgeben 
-                    Datei d = new Datei(ofdDatei.FileName);
+                    Datei d = new Datei(path);
 
 
                     //Window settings hinzufügen;
@@ -130,11 +130,7 @@ namespace OpenTools_V2._0
 
 
             }
-            //TODO: Eventuell Ändern.
-            try {
-                processDateien.CloseMainWindow();
-            }
-            catch { }
+
 
         }
         /// <summary>
@@ -390,5 +386,50 @@ namespace OpenTools_V2._0
             }
 
         }
+
+        #region Drag & Drop
+
+        //Dateien
+        private void listDateien_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+
+
+        }
+
+        private void listDateien_DragDrop(object sender, DragEventArgs e)
+        {
+
+           string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
+           foreach(string s in files)
+            {
+                dateiHinzufügen(s); 
+            }
+
+                 
+
+        }
+
+        //Ordner
+        private void listOrdner_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+
+
+        }
+
+        private void listOrdner_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
+            foreach (string s in files)
+            {
+                ordnerHinzufügen(s);
+            }
+
+        }
+
+        #endregion
     }
 }

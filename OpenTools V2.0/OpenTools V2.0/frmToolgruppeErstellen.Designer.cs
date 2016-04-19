@@ -104,12 +104,15 @@
             // 
             // listDateien
             // 
+            this.listDateien.AllowDrop = true;
             this.listDateien.ContextMenuStrip = this.cmsDateien;
             this.listDateien.FormattingEnabled = true;
             this.listDateien.Location = new System.Drawing.Point(1, 16);
             this.listDateien.Name = "listDateien";
             this.listDateien.Size = new System.Drawing.Size(213, 212);
             this.listDateien.TabIndex = 4;
+            this.listDateien.DragDrop += new System.Windows.Forms.DragEventHandler(this.listDateien_DragDrop);
+            this.listDateien.DragEnter += new System.Windows.Forms.DragEventHandler(this.listDateien_DragEnter);
             this.listDateien.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listDateien_MouseDoubleClick);
             // 
             // cmsDateien
@@ -145,12 +148,15 @@
             // 
             // listOrdner
             // 
+            this.listOrdner.AllowDrop = true;
             this.listOrdner.ContextMenuStrip = this.cmsOrdner;
             this.listOrdner.FormattingEnabled = true;
             this.listOrdner.Location = new System.Drawing.Point(219, 16);
             this.listOrdner.Name = "listOrdner";
             this.listOrdner.Size = new System.Drawing.Size(213, 212);
             this.listOrdner.TabIndex = 6;
+            this.listOrdner.DragDrop += new System.Windows.Forms.DragEventHandler(this.listOrdner_DragDrop);
+            this.listOrdner.DragEnter += new System.Windows.Forms.DragEventHandler(this.listOrdner_DragEnter);
             this.listOrdner.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listOrdner_MouseDoubleClick);
             // 
             // cmsOrdner
@@ -177,12 +183,14 @@
             // 
             // listInternetseiten
             // 
+            this.listInternetseiten.AllowDrop = true;
             this.listInternetseiten.ContextMenuStrip = this.cmsInternetseiten;
             this.listInternetseiten.FormattingEnabled = true;
             this.listInternetseiten.Location = new System.Drawing.Point(438, 16);
             this.listInternetseiten.Name = "listInternetseiten";
             this.listInternetseiten.Size = new System.Drawing.Size(213, 212);
             this.listInternetseiten.TabIndex = 7;
+            this.listInternetseiten.DragEnter += new System.Windows.Forms.DragEventHandler(this.listDateien_DragEnter);
             this.listInternetseiten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listInternetseiten_MouseDoubleClick);
             // 
             // cmsInternetseiten
