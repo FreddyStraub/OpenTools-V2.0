@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace OpenTools_V2._0
         [DllImport("Shell32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern void SHChangeNotify(uint wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
@@ -25,22 +28,34 @@ namespace OpenTools_V2._0
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if(!isAsssociated())
-                Associate();
+            ProcessListDemo.Windows l = new ProcessListDemo.Windows();
+            List<string> names = new List<string>();
+           
 
-            if (args.Length == 0)
-            {
-                Application.Run(new frmMain());
+            //Offenes OpenTools schließen.
 
-            }
-            else
-            {
-                Application.Run(new frmMain(args[0] + " " + args[1]));
-
+            foreach (Process p in Process.GetProcessesByName("OpenTools V2.0"))
+                {
+                p.CloseMainWindow();
             }
 
+                
+                if (!isAsssociated())
+                    Associate();
+
+                if (args.Length == 0)
+                {
+                    Application.Run(new frmMain());
+
+                }
+                else
+                {
+                    Application.Run(new frmMain(args[0] + " " + args[1]));
+
+                }
+
+           
         }
-
         public static bool isAsssociated()
         {
             return (Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.tg", false) == null);

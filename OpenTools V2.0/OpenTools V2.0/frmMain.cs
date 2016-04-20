@@ -47,6 +47,9 @@ namespace OpenTools_V2._0
         {
 
 
+            
+
+            
 
             einstellungen = einstellungen.load();
 
@@ -116,7 +119,7 @@ namespace OpenTools_V2._0
             }
 
         }
-
+        //Toolgruppe löschen:
         private void löschenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(listToolgruppen.SelectedItems.Count != 0)
