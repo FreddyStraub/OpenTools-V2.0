@@ -117,6 +117,20 @@ namespace OpenTools_V2._0
 
         }
 
+        private void löschenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(listToolgruppen.SelectedItems.Count != 0)
+            {
 
+                if(System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + listToolgruppen.SelectedItem + ".tg"))
+                {
+                    System.IO.File.Delete(einstellungen.path + "OpenTools V2.0\\" + listToolgruppen.SelectedItem + ".tg");
+
+                }
+
+            }
+
+            loadToolgruppen();
+        }
     }
 }

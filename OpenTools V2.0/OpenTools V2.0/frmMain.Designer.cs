@@ -82,6 +82,7 @@
             this.löschenToolStripMenuItem.Name = "löschenToolStripMenuItem";
             this.löschenToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.löschenToolStripMenuItem.Text = "Löschen";
+            this.löschenToolStripMenuItem.Click += new System.EventHandler(this.löschenToolStripMenuItem_Click);
             // 
             // einstellungenToolStripMenuItem
             // 

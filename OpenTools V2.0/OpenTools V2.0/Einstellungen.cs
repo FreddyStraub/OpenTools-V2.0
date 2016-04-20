@@ -13,6 +13,16 @@ namespace OpenTools_V2._0
     {
         public string path { get; set; }
 
+        public bool autostart { get; set; }
+
+        //Hotkey
+
+        public bool alt { get; set; }
+        public bool shift { get; set; }
+        public bool steuerung { get; set; }
+        public Keys key { get; set; }
+
+
         /// <summary>
         /// Speichert die Einstellungen.
         /// </summary>
@@ -47,9 +57,17 @@ namespace OpenTools_V2._0
 
         }
 
-        public void standart()
+        public void setStandart()
         {
             path = "C:\\";
+
+            alt = true;
+            shift = false;
+            steuerung = true;
+            key = Keys.RMenu;
+
+            autostart = true;
+
             save();
         }
     }
