@@ -69,6 +69,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmToolgruppeBearbeiten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToolgruppeBearbeiten.Designer.cs">
+      <DependentUpon>frmToolgruppeBearbeiten.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmToolgruppeErstellen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmToolgruppeBearbeiten.resx">
+      <DependentUpon>frmToolgruppeBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmToolgruppeErstellen.resx">
       <DependentUpon>frmToolgruppeErstellen.cs</DependentUpon>
@@ -118,12 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ToolgruppeIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />

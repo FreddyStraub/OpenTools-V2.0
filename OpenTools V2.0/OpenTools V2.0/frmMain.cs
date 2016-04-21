@@ -50,11 +50,6 @@ namespace OpenTools_V2._0
         private void frmMain_Load(object sender, EventArgs e)
         {
 
-
-            
-
-            
-
             einstellungen = einstellungen.load();
 
             OrdnerVerwaltung();
@@ -100,6 +95,8 @@ namespace OpenTools_V2._0
         {
             frmEinstellungen frmEinstellungen = new frmEinstellungen();
             frmEinstellungen.ShowDialog();
+
+            einstellungen = einstellungen.load();
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +135,22 @@ namespace OpenTools_V2._0
             }
 
             loadToolgruppen();
+        }
+
+        private void bearbeiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (listToolgruppen.SelectedItems.Count != 0)
+            {
+                ToolGruppe t = new ToolGruppe();
+                t = t.load(einstellungen.path + "\\OpenTools V2.0\\" +
+                    listToolgruppen.SelectedItem + ".tg");
+
+
+                frmToolgruppeBearbeiten frmToolgruppeBearbeiten = new frmToolgruppeBearbeiten(t);
+                frmToolgruppeBearbeiten.ShowDialog();
+
+            }
         }
     }
 }

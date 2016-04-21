@@ -59,25 +59,5 @@ namespace OpenTools_V2._0.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
-        /// </summary>
-        internal static System.Drawing.Icon logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
-        /// </summary>
-        internal static System.Drawing.Icon ToolgruppeIcon {
-            get {
-                object obj = ResourceManager.GetObject("ToolgruppeIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }

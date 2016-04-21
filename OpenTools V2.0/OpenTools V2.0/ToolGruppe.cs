@@ -12,8 +12,9 @@ using System.Windows.Forms;
 namespace OpenTools_V2._0
 {
     [Serializable]
-    class ToolGruppe
+    public class ToolGruppe
     {
+
         public string name { get; set; }
 
         public List<Datei> Dateien = new List<Datei>();

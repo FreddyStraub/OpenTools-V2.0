@@ -76,6 +76,7 @@
             this.bearbeiToolStripMenuItem.Name = "bearbeiToolStripMenuItem";
             this.bearbeiToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.bearbeiToolStripMenuItem.Text = "Bearbeiten...";
+            this.bearbeiToolStripMenuItem.Click += new System.EventHandler(this.bearbeiToolStripMenuItem_Click);
             // 
             // löschenToolStripMenuItem
             // 

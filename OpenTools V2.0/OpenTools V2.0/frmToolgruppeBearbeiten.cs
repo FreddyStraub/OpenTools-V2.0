@@ -6,72 +6,38 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OpenTools_V2._0
 {
-    public partial class frmToolgruppeErstellen : Form
+    public partial class frmToolgruppeBearbeiten : Form
     {
+
         Einstellungen einstellungen = new Einstellungen();
-        
+
         ToolGruppe toolgruppe = new ToolGruppe();
 
         public List<Datei> Dateien = new List<Datei>();
         public List<Ordner> Ordner = new List<Ordner>();
         public List<Internetseite> Internetseiten = new List<Internetseite>();
-
-        public frmToolgruppeErstellen()
+        
+        public frmToolgruppeBearbeiten(ToolGruppe toolgruppe)
         {
             InitializeComponent();
-        }
 
-        private void bAbbrechen_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void frmToolgruppeErstellen_Load(object sender, EventArgs e)
-        {
             einstellungen = einstellungen.load();
+
+            this.toolgruppe = toolgruppe;
+
+            textBox1.Text = toolgruppe.name;
+
+            loadDateien();
+            loadOrdner();
+            loadInternetseiten();
+            
         }
-        private void bFertig_Click(object sender, EventArgs e)
-        {
-
-            //TODO: IF textbox.text leer
-
-            if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" +textBox1.Text + ".tg"))
-            {
-
-                //Toolgruppe nicht vorhanden --> Erstellen
-
-                toolgruppe.Dateien = Dateien;
-                toolgruppe.Ordner = Ordner;
-                toolgruppe.Internetseiten = Internetseiten;
-
-                toolgruppe.name = textBox1.Text;
-
-                toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
-
-            }
-            else
-            {
-
-                //Toolgruppe bereits vorhanden:
-
-                MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.DialogResult = DialogResult.None;
-                textBox1.Select();
-                textBox1.SelectionStart = 0;
-                textBox1.SelectionLength = textBox1.Text.Length;
-
-            }
-        }
-
-
-        //TODO: MultiExtend Delete
 
         #region Datei
         Process processDateien;
@@ -85,7 +51,8 @@ namespace OpenTools_V2._0
             processDateien.StartInfo = new ProcessStartInfo(path);
             processDateien.EnableRaisingEvents = true;
 
-            try {
+            try
+            {
 
                 processDateien.Start();
 
@@ -101,7 +68,8 @@ namespace OpenTools_V2._0
                     foreach (ProcessListDemo.Window w in win.lstWindows)
                     {
 
-                        try {
+                        try
+                        {
 
                             if (w.winHandle == processDateien.MainWindowHandle)
                             {
@@ -109,7 +77,8 @@ namespace OpenTools_V2._0
                                 d.WindowSettings = w;
 
                             }
-                        } catch
+                        }
+                        catch
                         {
                             //TODO: Vielleicht gibts ja ne Lösung für die Fensterpositionen xD
 
@@ -126,9 +95,9 @@ namespace OpenTools_V2._0
             catch
             {
 
-                MessageBox.Show(System.IO.Path.GetFileNameWithoutExtension(path) + 
-                    System.IO.Path.GetExtension(path) + 
-                    " konnte nicht geöffnet werden! Überprüfe den Pfad oder das Programm mit dem die Datei geöffnet wird!", 
+                MessageBox.Show(System.IO.Path.GetFileNameWithoutExtension(path) +
+                    System.IO.Path.GetExtension(path) +
+                    " konnte nicht geöffnet werden! Überprüfe den Pfad oder das Programm mit dem die Datei geöffnet wird!",
                     "Datei nicht kompatibel!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
@@ -146,7 +115,7 @@ namespace OpenTools_V2._0
             {
 
                 int n = 0;
-                while(listDateien.SelectedItems.Count != 0)
+                while (listDateien.SelectedItems.Count != 0)
                 {
 
                     string s = listDateien.SelectedItems[n].ToString();
@@ -172,7 +141,6 @@ namespace OpenTools_V2._0
         {
             if (ofdDatei.ShowDialog() == DialogResult.OK)
                 dateiHinzufügen(ofdDatei.FileName);
-
         }
 
         //Löschen
@@ -206,16 +174,16 @@ namespace OpenTools_V2._0
 
                 //Neuen Ordner erstellen und Pfad mitgeben 
                 Ordner o = new Ordner(path);
-                
+
                 //o.WindowTitel = wm.DireWindowName;
-                
+
                 //Window settings hinzufügen;
-           
+
 
                 foreach (ProcessListDemo.Window w in win.lstWindows)
                 {
 
-       
+
 
                     if (w.winHandle == Handle)
                     {
@@ -241,13 +209,6 @@ namespace OpenTools_V2._0
 
             if (listOrdner.SelectedItems.Count != 0)
             {
-
-                //foreach (string s in listOrdner.SelectedItems)
-                //{
-                //    Ordner.Remove(Ordner[listOrdner.Items.IndexOf(s)]);
-                //    listOrdner.Items.Remove(s);
-
-                //}
                 int n = 0;
                 while (listOrdner.SelectedItems.Count != 0)
                 {
@@ -267,6 +228,19 @@ namespace OpenTools_V2._0
 
         }
 
+        //Hinzufügen
+        private void bOrdnerHinzufügen_Click(object sender, EventArgs e)
+        {
+            if (fbdOrdner.ShowDialog() == DialogResult.OK)
+                ordnerHinzufügen(fbdOrdner.SelectedPath);
+        }
+        private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (fbdOrdner.ShowDialog() == DialogResult.OK)
+                ordnerHinzufügen(fbdOrdner.SelectedPath);
+
+        }
+
         //Löschen
         private void bOrdnerLöschen_Click(object sender, EventArgs e)
         {
@@ -277,43 +251,11 @@ namespace OpenTools_V2._0
             ordnerLöschen();
         }
 
-        //Hinzufügen
-
-        private void bOrdnerHinzufügen_Click(object sender, EventArgs e)
-        {
-            if(fbdOrdner.ShowDialog() == DialogResult.OK)
-            {
-                ordnerHinzufügen(fbdOrdner.SelectedPath);
-            }
-        }
-        private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (fbdOrdner.ShowDialog() == DialogResult.OK)
-            {
-                ordnerHinzufügen(fbdOrdner.SelectedPath);
-            }
-
-        }
 
         #endregion
 
         #region Internetseite
 
-        private void hinzufügenToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            AddDialoge.frmAddInternetseite frmAddInternetseite = new AddDialoge.frmAddInternetseite();
-            frmAddInternetseite.ShowDialog();
-
-            if (frmAddInternetseite.URL != null)
-            {
-                Internetseite i = new Internetseite();
-                i.url = frmAddInternetseite.URL;
-
-                Internetseiten.Add(i);
-                listInternetseiten.Items.Add(i.url);
-
-            }
-        }
         /// <summary>
         /// Löscht die ausgewählten Internetseiten.
         /// </summary>
@@ -337,7 +279,7 @@ namespace OpenTools_V2._0
 
 
         }
-
+        
         /// <summary>
         /// Fügt eine Internetseite hinzu.
         /// </summary>
@@ -358,6 +300,11 @@ namespace OpenTools_V2._0
 
         }
 
+        //Löschen
+        private void bInternetseiteLöschen_Click(object sender, EventArgs e)
+        {
+            internetseiteLöschen();
+        }
         private void entfernenToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             internetseiteLöschen();
@@ -365,102 +312,99 @@ namespace OpenTools_V2._0
 
         #endregion
 
-
-
-        private void listDateien_MouseDoubleClick(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Lädt die Dateien der zu bearbeitenden Toolgruppe
+        /// </summary>
+        private void loadDateien()
         {
-            if (listDateien.SelectedItems.Count != 0)
+
+            foreach(Datei d in toolgruppe.Dateien)
             {
-                try {
-                    Datei d = Dateien[(listDateien.Items.IndexOf(listDateien.SelectedItem))];
-                    Process.Start(d.path);
-                }catch (Exception ex)
+                Dateien.Add(d);
+                listDateien.Items.Add(d.name);
+            }
+
+        }
+
+        /// <summary>
+        /// Lädt die Ordner der zu bearbeitenden Toolgruppe
+        /// </summary>
+        private void loadOrdner()
+        {
+            foreach (Ordner o in toolgruppe.Ordner)
+            {
+                Ordner.Add(o);
+                listOrdner.Items.Add(o.name);
+            }
+
+        }
+
+        /// <summary>
+        /// Lädt die Internetseiten der zu bearbeitenden Toolgruppe
+        /// </summary>
+        private void loadInternetseiten()
+        {
+            foreach (Internetseite i in toolgruppe.Internetseiten)
+            {
+                Internetseiten.Add(i);
+                listInternetseiten.Items.Add(i.url);
+            }
+
+        }
+
+        private void bFertig_Click(object sender, EventArgs e)
+        {
+            System.IO.File.Delete(einstellungen.path + "OpenTools V2.0\\" + toolgruppe.name + ".tg");
+
+            if (textBox1.Text != String.Empty)
+            {
+
+                if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
                 {
-                    MessageBox.Show("Die Datei konnte nicht geöffnet werden!\n\nFehler:\n " + ex.ToString(), "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
-        private void listOrdner_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (listOrdner.SelectedItems.Count != 0)
-            {
-                try {
-                    Ordner o = Ordner[(listOrdner.Items.IndexOf(listOrdner.SelectedItem))];
-                    Process.Start(o.path);
+                    ToolGruppe t = new ToolGruppe();
+
+                    t.Dateien = Dateien;
+                    t.Ordner = Ordner;
+                    t.Internetseiten = Internetseiten;
+
+                    t.name = textBox1.Text;
+
+                    t.save(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg");
                 }
-                catch (Exception ex) 
+                else
                 {
-                    MessageBox.Show("Der Ordner konnte nich geöffnet werden!\n\nFehler:\n" + ex.ToString(), "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Toolgruppe bereits vorhanden:
+
+                    MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.None;
+                    textBox1.Select();
+                    textBox1.SelectionStart = 0;
+                    textBox1.SelectionLength = textBox1.Text.Length;
 
                 }
             }
-
-        }
-
-        private void listInternetseiten_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (listInternetseiten.SelectedItems.Count != 0)
+            else
             {
-                try {
-                    Internetseite i = Internetseiten[(listInternetseiten.Items.IndexOf(listInternetseiten.SelectedItem))];
-                    Process.Start(i.url);
-                }catch{
 
-                    MessageBox.Show("URL konnte nicht geöffnet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Bitte gib der Toolgruppe einen Namen!", "NAME", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.None;
+                textBox1.Select();
+                textBox1.SelectionStart = 0;
+                textBox1.SelectionLength = textBox1.Text.Length;
+
             }
-
         }
-
-        #region Drag & Drop
-
-        //Dateien
-        private void listDateien_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-
-
-        }
-
-        private void listDateien_DragDrop(object sender, DragEventArgs e)
-        {
-
-           string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
-           foreach(string s in files)
-            {
-                dateiHinzufügen(s); 
-            }
-
-                 
-
-        }
-
-        //Ordner
-        private void listOrdner_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-
-
-        }
-
-        private void listOrdner_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
-            foreach (string s in files)
-            {
-                ordnerHinzufügen(s);
-            }
-
-        }
-
-        #endregion
 
         private void bInternetseiteHinzufügen_Click(object sender, EventArgs e)
         {
             internetseiteHinzufügen();
         }
+
+        private void hinzufügenToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            internetseiteHinzufügen();
+        }
+
     }
 }
