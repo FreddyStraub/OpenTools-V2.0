@@ -26,9 +26,13 @@ namespace OpenTools_V2._0
         {
             InitializeComponent();
             
+
+
             ToolGruppe t = new ToolGruppe();
             t = t.load(toolgruppePath);
             t.run();
+
+            WindowState = FormWindowState.Minimized;
 
         }
 

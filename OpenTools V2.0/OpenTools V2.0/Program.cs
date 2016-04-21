@@ -28,18 +28,16 @@ namespace OpenTools_V2._0
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ProcessListDemo.Windows l = new ProcessListDemo.Windows();
-            List<string> names = new List<string>();
-           
-
             //Offenes OpenTools schließen.
-
             foreach (Process p in Process.GetProcessesByName("OpenTools V2.0"))
-                {
+            {
                 p.CloseMainWindow();
             }
 
-                
+            //TODO: Evtl. Fenster position des alten Fenster dem neuen geben
+
+            //Dateiendung registrieren
+                            
                 if (!isAsssociated())
                     Associate();
 
