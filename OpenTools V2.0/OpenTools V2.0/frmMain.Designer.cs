@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ContextMenuStrip cmsMain;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.listToolgruppen = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -38,11 +40,15 @@
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbToolgruppen = new System.Windows.Forms.Label();
             this.llbWolf066LP = new System.Windows.Forms.LinkLabel();
+            this.desktopverknüpfungErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
+            cmsMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // listToolgruppen
             // 
+            this.listToolgruppen.ContextMenuStrip = cmsMain;
             this.listToolgruppen.FormattingEnabled = true;
             this.listToolgruppen.Location = new System.Drawing.Point(14, 47);
             this.listToolgruppen.Name = "listToolgruppen";
@@ -119,6 +125,20 @@
             this.llbWolf066LP.Text = "by Wolf066LP";
             this.llbWolf066LP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWolf066LP_LinkClicked);
             // 
+            // cmsMain
+            // 
+            cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.desktopverknüpfungErstellenToolStripMenuItem});
+            cmsMain.Name = "cmsMain";
+            cmsMain.Size = new System.Drawing.Size(233, 48);
+            // 
+            // desktopverknüpfungErstellenToolStripMenuItem
+            // 
+            this.desktopverknüpfungErstellenToolStripMenuItem.Name = "desktopverknüpfungErstellenToolStripMenuItem";
+            this.desktopverknüpfungErstellenToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.desktopverknüpfungErstellenToolStripMenuItem.Text = "Desktopverknüpfung erstellen";
+            this.desktopverknüpfungErstellenToolStripMenuItem.Click += new System.EventHandler(this.desktopverknüpfungErstellenToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +159,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            cmsMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +176,7 @@
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
         private System.Windows.Forms.Label lbToolgruppen;
         private System.Windows.Forms.LinkLabel llbWolf066LP;
+        private System.Windows.Forms.ToolStripMenuItem desktopverknüpfungErstellenToolStripMenuItem;
     }
 }
 

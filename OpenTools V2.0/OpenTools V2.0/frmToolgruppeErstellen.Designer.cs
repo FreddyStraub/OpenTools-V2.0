@@ -58,6 +58,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ofdDatei = new System.Windows.Forms.OpenFileDialog();
             this.fbdOrdner = new System.Windows.Forms.FolderBrowserDialog();
+            this.checkShortcut = new System.Windows.Forms.CheckBox();
             this.cmsDateien.SuspendLayout();
             this.cmsOrdner.SuspendLayout();
             this.cmsInternetseiten.SuspendLayout();
@@ -314,6 +315,16 @@
             // 
             this.ofdDatei.FileName = "openFileDialog1";
             // 
+            // checkShortcut
+            // 
+            this.checkShortcut.AutoSize = true;
+            this.checkShortcut.Location = new System.Drawing.Point(336, 301);
+            this.checkShortcut.Name = "checkShortcut";
+            this.checkShortcut.Size = new System.Drawing.Size(168, 17);
+            this.checkShortcut.TabIndex = 17;
+            this.checkShortcut.Text = "Desktopverknüpfung erstellen";
+            this.checkShortcut.UseVisualStyleBackColor = true;
+            // 
             // frmToolgruppeErstellen
             // 
             this.AcceptButton = this.bFertig;
@@ -321,6 +332,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bAbbrechen;
             this.ClientSize = new System.Drawing.Size(669, 324);
+            this.Controls.Add(this.checkShortcut);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.textBox1);
@@ -373,5 +385,6 @@
         private System.Windows.Forms.ToolStripMenuItem entfernenToolStripMenuItem2;
         private System.Windows.Forms.OpenFileDialog ofdDatei;
         private System.Windows.Forms.FolderBrowserDialog fbdOrdner;
+        private System.Windows.Forms.CheckBox checkShortcut;
     }
 }

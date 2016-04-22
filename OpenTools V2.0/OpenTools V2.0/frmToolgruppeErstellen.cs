@@ -55,6 +55,9 @@ namespace OpenTools_V2._0
 
                 toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
 
+                if (checkShortcut.Checked)
+                    Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+
             }
             else
             {

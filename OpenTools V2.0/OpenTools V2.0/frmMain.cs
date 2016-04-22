@@ -152,5 +152,17 @@ namespace OpenTools_V2._0
 
             }
         }
+
+        private void desktopverknüpfungErstellenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if(listToolgruppen.SelectedItems.Count != 0)
+            {
+
+                Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\" + listToolgruppen.SelectedItem + ".tg");
+
+            }
+
+        }
     }
 }
