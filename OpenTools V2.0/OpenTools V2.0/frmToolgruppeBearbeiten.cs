@@ -359,27 +359,41 @@ namespace OpenTools_V2._0
             if (textBox1.Text != String.Empty)
             {
 
-                if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
+                if (IS.creatable(textBox1.Text) == true)
                 {
 
-                    ToolGruppe t = new ToolGruppe();
+                    if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
+                    {
 
-                    t.Dateien = Dateien;
-                    t.Ordner = Ordner;
-                    t.Internetseiten = Internetseiten;
+                        ToolGruppe t = new ToolGruppe();
 
-                    t.name = textBox1.Text;
+                        t.Dateien = Dateien;
+                        t.Ordner = Ordner;
+                        t.Internetseiten = Internetseiten;
 
-                    t.save(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg");
+                        t.name = textBox1.Text;
 
-                    
+                        t.save(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg");
+
+
+
+                    }
+                    else
+                    {
+                        //Toolgruppe bereits vorhanden:
+
+                        MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.None;
+                        textBox1.Select();
+                        textBox1.SelectionStart = 0;
+                        textBox1.SelectionLength = textBox1.Text.Length;
+
+                    }
 
                 }
                 else
                 {
-                    //Toolgruppe bereits vorhanden:
-
-                    MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Die Zeichen \\ / ? : * \" < > | dürfen nicht verwendet werden!", "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.DialogResult = DialogResult.None;
                     textBox1.Select();
                     textBox1.SelectionStart = 0;
@@ -389,8 +403,7 @@ namespace OpenTools_V2._0
             }
             else
             {
-
-                MessageBox.Show("Bitte gib der Toolgruppe einen Namen!", "NAME", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bitte gib deiner Toolgruppe einen Namen! Sie ist sonst traurig", "Name --> Toolgruppe traurig", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.None;
                 textBox1.Select();
                 textBox1.SelectionStart = 0;

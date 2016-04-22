@@ -42,29 +42,55 @@ namespace OpenTools_V2._0
 
             //TODO: IF textbox.text leer
 
-            if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" +textBox1.Text + ".tg"))
+            if (textBox1.Text != String.Empty)
             {
+                if (IS.creatable(textBox1.Text) == true)
+                {
 
-                //Toolgruppe nicht vorhanden --> Erstellen
+                    if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
+                    {
 
-                toolgruppe.Dateien = Dateien;
-                toolgruppe.Ordner = Ordner;
-                toolgruppe.Internetseiten = Internetseiten;
+                        //Toolgruppe nicht vorhanden --> Erstellen
 
-                toolgruppe.name = textBox1.Text;
+                        toolgruppe.Dateien = Dateien;
+                        toolgruppe.Ordner = Ordner;
+                        toolgruppe.Internetseiten = Internetseiten;
 
-                toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+                        toolgruppe.name = textBox1.Text;
 
-                if (checkShortcut.Checked)
-                    Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+                        toolgruppe.save(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
 
+                        //DesktopShortcut erstellen
+                        if (checkShortcut.Checked)
+                            Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\OpenTools V2.0\\" + textBox1.Text + ".tg");
+
+                    }
+                    else
+                    {
+
+                        //Toolgruppe bereits vorhanden:
+
+                        MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.None;
+                        textBox1.Select();
+                        textBox1.SelectionStart = 0;
+                        textBox1.SelectionLength = textBox1.Text.Length;
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Die Zeichen \\ / ? : * \" < > | dürfen nicht verwendet werden!", "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.None;
+                    textBox1.Select();
+                    textBox1.SelectionStart = 0;
+                    textBox1.SelectionLength = textBox1.Text.Length;
+
+                }
             }
             else
             {
-
-                //Toolgruppe bereits vorhanden:
-
-                MessageBox.Show("Toolgruppe bereits vorhanden!", "Bereits vorhanden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bitte gib deiner Toolgruppe einen Namen! Sie ist sonst traurig", "Name --> Toolgruppe traurig", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.None;
                 textBox1.Select();
                 textBox1.SelectionStart = 0;
