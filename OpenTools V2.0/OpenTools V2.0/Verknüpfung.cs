@@ -19,7 +19,7 @@ namespace OpenTools_V2._0
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
             WshShell shell = new WshShell();
-            IWshShortcut link = (IWshShortcut)shell.CreateShortcut(deskDir + "\\"+ System.IO.Path.GetFileNameWithoutExtension(filepath) +".lnk");
+            IWshShortcut link = (IWshShortcut)shell.CreateShortcut(deskDir + "\\"+ System.IO.Path.GetFileNameWithoutExtension(filepath)+" - Toolgruppe" +".lnk");
             link.IconLocation = Application.StartupPath + "\\ToolgruppeIcon.ico";
             link.TargetPath = filepath;
             link.Save();

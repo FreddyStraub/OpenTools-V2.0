@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip cmsMain;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            this.desktopverknüpfungErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listToolgruppen = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,11 +41,24 @@
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbToolgruppen = new System.Windows.Forms.Label();
             this.llbWolf066LP = new System.Windows.Forms.LinkLabel();
-            this.desktopverknüpfungErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuStrip1.SuspendLayout();
             cmsMain.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cmsMain
+            // 
+            cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.desktopverknüpfungErstellenToolStripMenuItem});
+            cmsMain.Name = "cmsMain";
+            cmsMain.Size = new System.Drawing.Size(233, 26);
+            // 
+            // desktopverknüpfungErstellenToolStripMenuItem
+            // 
+            this.desktopverknüpfungErstellenToolStripMenuItem.Name = "desktopverknüpfungErstellenToolStripMenuItem";
+            this.desktopverknüpfungErstellenToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.desktopverknüpfungErstellenToolStripMenuItem.Text = "Desktopverknüpfung erstellen";
+            this.desktopverknüpfungErstellenToolStripMenuItem.Click += new System.EventHandler(this.desktopverknüpfungErstellenToolStripMenuItem_Click);
             // 
             // listToolgruppen
             // 
@@ -97,6 +111,7 @@
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen...";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
+            this.einstellungenToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.einstellungenToolStripMenuItem_MouseDown);
             // 
             // beendenToolStripMenuItem
             // 
@@ -125,20 +140,6 @@
             this.llbWolf066LP.Text = "by Wolf066LP";
             this.llbWolf066LP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWolf066LP_LinkClicked);
             // 
-            // cmsMain
-            // 
-            cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.desktopverknüpfungErstellenToolStripMenuItem});
-            cmsMain.Name = "cmsMain";
-            cmsMain.Size = new System.Drawing.Size(233, 48);
-            // 
-            // desktopverknüpfungErstellenToolStripMenuItem
-            // 
-            this.desktopverknüpfungErstellenToolStripMenuItem.Name = "desktopverknüpfungErstellenToolStripMenuItem";
-            this.desktopverknüpfungErstellenToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.desktopverknüpfungErstellenToolStripMenuItem.Text = "Desktopverknüpfung erstellen";
-            this.desktopverknüpfungErstellenToolStripMenuItem.Click += new System.EventHandler(this.desktopverknüpfungErstellenToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,10 +157,11 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            cmsMain.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            cmsMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

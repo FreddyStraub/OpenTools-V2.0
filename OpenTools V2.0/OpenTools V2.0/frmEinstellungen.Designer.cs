@@ -31,12 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEinstellungen));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.bBrowse = new System.Windows.Forms.Button();
-            this.fbdEinstellungen = new System.Windows.Forms.FolderBrowserDialog();
             this.cmsBrose = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ordnerÖffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bBrowse = new System.Windows.Forms.Button();
+            this.fbdEinstellungen = new System.Windows.Forms.FolderBrowserDialog();
             this.bSpeichern = new System.Windows.Forms.Button();
             this.bAbbrechen = new System.Windows.Forms.Button();
+            this.checkAuto = new System.Windows.Forms.CheckBox();
+            this.checkSteuerung = new System.Windows.Forms.CheckBox();
+            this.checkAlt = new System.Windows.Forms.CheckBox();
+            this.checkShift = new System.Windows.Forms.CheckBox();
+            this.bKey = new System.Windows.Forms.Button();
             this.cmsBrose.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,19 +50,10 @@
             this.textBox1.ContextMenuStrip = this.cmsBrose;
             this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(320, 20);
             this.textBox1.TabIndex = 0;
-            // 
-            // bBrowse
-            // 
-            this.bBrowse.ContextMenuStrip = this.cmsBrose;
-            this.bBrowse.Location = new System.Drawing.Point(337, 10);
-            this.bBrowse.Name = "bBrowse";
-            this.bBrowse.Size = new System.Drawing.Size(29, 23);
-            this.bBrowse.TabIndex = 1;
-            this.bBrowse.Text = "...";
-            this.bBrowse.UseVisualStyleBackColor = true;
-            this.bBrowse.Click += new System.EventHandler(this.button1_Click);
+            this.textBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDoubleClick);
             // 
             // cmsBrose
             // 
@@ -72,6 +68,17 @@
             this.ordnerÖffnenToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.ordnerÖffnenToolStripMenuItem.Text = "Ordner öffnen";
             this.ordnerÖffnenToolStripMenuItem.Click += new System.EventHandler(this.ordnerÖffnenToolStripMenuItem_Click);
+            // 
+            // bBrowse
+            // 
+            this.bBrowse.ContextMenuStrip = this.cmsBrose;
+            this.bBrowse.Location = new System.Drawing.Point(337, 10);
+            this.bBrowse.Name = "bBrowse";
+            this.bBrowse.Size = new System.Drawing.Size(29, 23);
+            this.bBrowse.TabIndex = 1;
+            this.bBrowse.Text = "...";
+            this.bBrowse.UseVisualStyleBackColor = true;
+            this.bBrowse.Click += new System.EventHandler(this.button1_Click);
             // 
             // bSpeichern
             // 
@@ -92,6 +99,60 @@
             this.bAbbrechen.TabIndex = 4;
             this.bAbbrechen.Text = "Abbrechen";
             this.bAbbrechen.UseVisualStyleBackColor = true;
+            this.bAbbrechen.Click += new System.EventHandler(this.bAbbrechen_Click);
+            // 
+            // checkAuto
+            // 
+            this.checkAuto.AutoSize = true;
+            this.checkAuto.Location = new System.Drawing.Point(12, 61);
+            this.checkAuto.Name = "checkAuto";
+            this.checkAuto.Size = new System.Drawing.Size(68, 17);
+            this.checkAuto.TabIndex = 5;
+            this.checkAuto.Text = "Autostart";
+            this.checkAuto.UseVisualStyleBackColor = true;
+            // 
+            // checkSteuerung
+            // 
+            this.checkSteuerung.AutoSize = true;
+            this.checkSteuerung.Location = new System.Drawing.Point(12, 38);
+            this.checkSteuerung.Name = "checkSteuerung";
+            this.checkSteuerung.Size = new System.Drawing.Size(45, 17);
+            this.checkSteuerung.TabIndex = 7;
+            this.checkSteuerung.Text = "Strg";
+            this.checkSteuerung.UseVisualStyleBackColor = true;
+            // 
+            // checkAlt
+            // 
+            this.checkAlt.AutoSize = true;
+            this.checkAlt.Location = new System.Drawing.Point(63, 38);
+            this.checkAlt.Name = "checkAlt";
+            this.checkAlt.Size = new System.Drawing.Size(38, 17);
+            this.checkAlt.TabIndex = 8;
+            this.checkAlt.Text = "Alt";
+            this.checkAlt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkAlt.UseVisualStyleBackColor = true;
+            // 
+            // checkShift
+            // 
+            this.checkShift.AutoSize = true;
+            this.checkShift.Location = new System.Drawing.Point(107, 38);
+            this.checkShift.Name = "checkShift";
+            this.checkShift.Size = new System.Drawing.Size(47, 17);
+            this.checkShift.TabIndex = 9;
+            this.checkShift.Text = "Shift";
+            this.checkShift.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkShift.UseVisualStyleBackColor = true;
+            // 
+            // bKey
+            // 
+            this.bKey.Location = new System.Drawing.Point(160, 34);
+            this.bKey.Name = "bKey";
+            this.bKey.Size = new System.Drawing.Size(114, 23);
+            this.bKey.TabIndex = 10;
+            this.bKey.Text = "Key";
+            this.bKey.UseVisualStyleBackColor = true;
+            this.bKey.Click += new System.EventHandler(this.bKey_Click);
+            this.bKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bKey_KeyDown);
             // 
             // frmEinstellungen
             // 
@@ -99,7 +160,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bAbbrechen;
-            this.ClientSize = new System.Drawing.Size(376, 309);
+            this.ClientSize = new System.Drawing.Size(376, 272);
+            this.Controls.Add(this.bKey);
+            this.Controls.Add(this.checkShift);
+            this.Controls.Add(this.checkAlt);
+            this.Controls.Add(this.checkSteuerung);
+            this.Controls.Add(this.checkAuto);
             this.Controls.Add(this.bAbbrechen);
             this.Controls.Add(this.bSpeichern);
             this.Controls.Add(this.bBrowse);
@@ -126,5 +192,10 @@
         private System.Windows.Forms.ToolStripMenuItem ordnerÖffnenToolStripMenuItem;
         private System.Windows.Forms.Button bSpeichern;
         private System.Windows.Forms.Button bAbbrechen;
+        private System.Windows.Forms.CheckBox checkAuto;
+        private System.Windows.Forms.CheckBox checkSteuerung;
+        private System.Windows.Forms.CheckBox checkAlt;
+        private System.Windows.Forms.CheckBox checkShift;
+        private System.Windows.Forms.Button bKey;
     }
 }

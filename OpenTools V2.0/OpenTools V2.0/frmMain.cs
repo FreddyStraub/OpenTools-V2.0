@@ -56,6 +56,7 @@ namespace OpenTools_V2._0
 
             loadToolgruppen();
 
+            registerHotkey();
 
         }
 
@@ -93,10 +94,17 @@ namespace OpenTools_V2._0
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEinstellungen frmEinstellungen = new frmEinstellungen();
-            frmEinstellungen.ShowDialog();
 
-            einstellungen = einstellungen.load();
+                frmEinstellungen frmEinstellungen = new frmEinstellungen();
+                frmEinstellungen.ShowDialog();
+
+                einstellungen = einstellungen.load();
+
+                loadToolgruppen();
+            
+                //Hotkey reloaden
+                UnregisterHotKey(this.Handle, 1);
+                registerHotkey();
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,5 +172,69 @@ namespace OpenTools_V2._0
             }
 
         }
+
+        private void einstellungenToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Process.Start(einstellungen.path + "\\OpenTools V2.0");
+            }
+
+        }
+
+        private void registerHotkey()
+        {
+            RegisterHotKey(this.Handle, 1, getDinger(), (int)einstellungen.key);
+
+        }
+
+        //Hotkey:
+
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+
+        const int MOD_CONTROL = 0x0002;
+        const int MOD_ALT = 0x0001;
+        const int MOD_SHIFT = 0x0004;
+        const int WM_HOTKEY = 0x0312;
+
+        private int getDinger()
+        {
+            int vor = 0;
+
+
+            if (einstellungen.alt == true)
+            {
+                vor += MOD_ALT;
+            }
+            if (einstellungen.shift == true)
+            {
+                vor += MOD_SHIFT;
+            }
+            if (einstellungen.steuerung == true)
+            {
+                vor += MOD_CONTROL;
+            }
+            return vor;
+
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(this.Handle, 1);
+
+        }
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
+                WindowState = FormWindowState.Normal;
+                
+                base.WndProc(ref m);
+        }
+
+        }
+
     }
-}

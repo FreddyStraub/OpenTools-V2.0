@@ -20,8 +20,8 @@ namespace OpenTools_V2._0
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if(fbdEinstellungen.ShowDialog() == DialogResult.OK)
+
+            if (fbdEinstellungen.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = fbdEinstellungen.SelectedPath;
             }
@@ -31,7 +31,17 @@ namespace OpenTools_V2._0
         private void frmEinstellungen_Load(object sender, EventArgs e)
         {
             Einstellungen s = new Einstellungen();
-            s.path = textBox1.Text;
+            s = s.load();
+
+            textBox1.Text = s.path;
+
+            checkAuto.Checked = s.autostart;
+
+            checkSteuerung.Checked = s.steuerung;
+            checkShift.Checked = s.shift;
+            checkAlt.Checked = s.alt;
+            bKey.Text = s.key.ToString();
+
 
 
         }
@@ -44,9 +54,71 @@ namespace OpenTools_V2._0
         private void bSpeichern_Click(object sender, EventArgs e)
         {
             Einstellungen ein = new Einstellungen();
+
             ein.path = textBox1.Text;
 
+            ein.alt = checkAlt.Checked;
+            ein.shift = checkShift.Checked;
+            ein.steuerung = checkSteuerung.Checked;
+
+            ein.key = (Keys)Enum.Parse(typeof(Keys), bKey.Text);
+
+            ein.autostart = checkAuto.Checked;
+
+
             ein.save();
+
+            Close();
+        }
+
+        private void bAbbrechen_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Process.Start(textBox1.Text);
+        }
+
+        private void bKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (bKey.Text == "Drücke die Taste!")
+            {
+
+                switch (e.KeyCode)
+                {
+                    case Keys.Control:
+                        break;
+                    case Keys.ControlKey:
+                        break;
+                    case Keys.LControlKey:
+                        break;
+                    case Keys.RControlKey:
+                        break;
+                    case Keys.Alt:
+                        break;
+                    case Keys.Menu:
+                        break;
+                    case Keys.LShiftKey:
+                        break;
+                    case Keys.RShiftKey:
+                        break;
+                    case Keys.Shift:
+                        break;
+                    case Keys.ShiftKey:
+                        break;
+                    default:
+                        bKey.Text = e.KeyCode.ToString(); break;
+
+                }
+
+            }
+        }
+
+        private void bKey_Click(object sender, EventArgs e)
+        {
+            bKey.Text = "Drücke die Taste!";
 
         }
     }
