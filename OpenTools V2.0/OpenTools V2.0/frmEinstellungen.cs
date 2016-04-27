@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +44,9 @@ namespace OpenTools_V2._0
             checkAlt.Checked = s.alt;
             bKey.Text = s.key.ToString();
 
+            ToolTip t = new ToolTip();
+            t.SetToolTip(checkAuto, s.AutostartGruppe);
+
 
 
         }
@@ -65,10 +70,30 @@ namespace OpenTools_V2._0
 
             ein.autostart = checkAuto.Checked;
 
+            RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (ein.autostart)
+            {
+
+                Verknüpfung.VerknüpfungErstellen(Application.ExecutablePath, Application.StartupPath, Application.StartupPath + "\\logo.ico", "startup");
+                System.IO.File.SetAttributes(Application.StartupPath + "\\OpenTools V2.0.lnk", System.IO.FileAttributes.Hidden);
+
+                rkApp.SetValue(Application.ProductName, Application.StartupPath + "\\OpenTools V2.0.lnk");
+
+
+            }
+            else
+            {
+                rkApp.DeleteValue(Application.ProductName, false);
+                System.IO.File.Delete(Application.StartupPath + "\\OpenTools V2.0.lnk");
+
+            }
+
 
             ein.save();
 
             Close();
+
         }
 
         private void bAbbrechen_Click(object sender, EventArgs e)

@@ -50,13 +50,36 @@ namespace OpenTools_V2._0
         private void frmMain_Load(object sender, EventArgs e)
         {
 
-            einstellungen = einstellungen.load();
+            Settings();
 
             OrdnerVerwaltung();
 
             loadToolgruppen();
 
             registerHotkey();
+
+        }
+
+        private void Settings()
+        {
+            einstellungen = einstellungen.load();
+
+            //Autpstart Gruppe
+
+            //if (Application.StartupPath == "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp")
+            //    {
+            if (Program.LaunchedViaStartup)
+
+            {
+                if (einstellungen.AutostartGruppe != null)
+                {
+                    ToolGruppe AStart = new ToolGruppe();
+                    AStart = AStart.load(einstellungen.path + "\\OpenTools V2.0\\" + einstellungen.AutostartGruppe + ".tg");
+
+                    AStart.run();
+                }
+
+                }
 
         }
 
@@ -158,6 +181,10 @@ namespace OpenTools_V2._0
                 frmToolgruppeBearbeiten frmToolgruppeBearbeiten = new frmToolgruppeBearbeiten(t);
                 frmToolgruppeBearbeiten.ShowDialog();
 
+                einstellungen = einstellungen.load();
+
+                loadToolgruppen();
+
             }
         }
 
@@ -235,6 +262,25 @@ namespace OpenTools_V2._0
                 base.WndProc(ref m);
         }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            einstellungen.AutostartGruppe = listToolgruppen.SelectedItem.ToString();
+            einstellungen.save();
+
+            einstellungen = einstellungen.load();
+
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            einstellungen.AutostartGruppe = null;
+            einstellungen.save();
+
+            einstellungen = einstellungen.load();
+
+
+        }
+    }
 
     }

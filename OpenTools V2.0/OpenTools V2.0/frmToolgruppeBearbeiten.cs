@@ -365,6 +365,7 @@ namespace OpenTools_V2._0
                     if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
                     {
 
+                        
                         ToolGruppe t = new ToolGruppe();
 
                         t.Dateien = Dateien;
@@ -375,7 +376,12 @@ namespace OpenTools_V2._0
 
                         t.save(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg");
 
-
+                        //Wenn Grppe = Autostartgruppe --> dann auch umbennen
+                        if(einstellungen.AutostartGruppe == toolgruppe.name)
+                        {
+                            einstellungen.AutostartGruppe = t.name;
+                            einstellungen.save();
+                        }
 
                     }
                     else

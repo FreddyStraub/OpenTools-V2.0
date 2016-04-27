@@ -32,6 +32,9 @@
             System.Windows.Forms.ContextMenuStrip cmsMain;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.desktopverknüpfungErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.listToolgruppen = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +52,12 @@
             // cmsMain
             // 
             cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.desktopverknüpfungErstellenToolStripMenuItem});
+            this.desktopverknüpfungErstellenToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
             cmsMain.Name = "cmsMain";
-            cmsMain.Size = new System.Drawing.Size(233, 26);
+            cmsMain.Size = new System.Drawing.Size(233, 98);
             // 
             // desktopverknüpfungErstellenToolStripMenuItem
             // 
@@ -59,6 +65,25 @@
             this.desktopverknüpfungErstellenToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.desktopverknüpfungErstellenToolStripMenuItem.Text = "Desktopverknüpfung erstellen";
             this.desktopverknüpfungErstellenToolStripMenuItem.Click += new System.EventHandler(this.desktopverknüpfungErstellenToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(232, 22);
+            this.toolStripMenuItem1.Text = "Als Autpstartgruppe festelgen";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(232, 22);
+            this.toolStripMenuItem2.Text = "Autpstartgruppe entfernen";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // listToolgruppen
             // 
@@ -179,6 +204,9 @@
         private System.Windows.Forms.Label lbToolgruppen;
         private System.Windows.Forms.LinkLabel llbWolf066LP;
         private System.Windows.Forms.ToolStripMenuItem desktopverknüpfungErstellenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

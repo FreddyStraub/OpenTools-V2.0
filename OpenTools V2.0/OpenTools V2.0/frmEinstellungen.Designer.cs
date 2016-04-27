@@ -51,7 +51,7 @@
             this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
+            this.textBox1.Size = new System.Drawing.Size(262, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDoubleClick);
             // 
@@ -72,7 +72,7 @@
             // bBrowse
             // 
             this.bBrowse.ContextMenuStrip = this.cmsBrose;
-            this.bBrowse.Location = new System.Drawing.Point(337, 10);
+            this.bBrowse.Location = new System.Drawing.Point(280, 10);
             this.bBrowse.Name = "bBrowse";
             this.bBrowse.Size = new System.Drawing.Size(29, 23);
             this.bBrowse.TabIndex = 1;
@@ -82,7 +82,7 @@
             // 
             // bSpeichern
             // 
-            this.bSpeichern.Location = new System.Drawing.Point(210, 239);
+            this.bSpeichern.Location = new System.Drawing.Point(151, 95);
             this.bSpeichern.Name = "bSpeichern";
             this.bSpeichern.Size = new System.Drawing.Size(75, 23);
             this.bSpeichern.TabIndex = 3;
@@ -93,7 +93,7 @@
             // bAbbrechen
             // 
             this.bAbbrechen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bAbbrechen.Location = new System.Drawing.Point(291, 239);
+            this.bAbbrechen.Location = new System.Drawing.Point(232, 95);
             this.bAbbrechen.Name = "bAbbrechen";
             this.bAbbrechen.Size = new System.Drawing.Size(75, 23);
             this.bAbbrechen.TabIndex = 4;
@@ -104,7 +104,7 @@
             // checkAuto
             // 
             this.checkAuto.AutoSize = true;
-            this.checkAuto.Location = new System.Drawing.Point(12, 61);
+            this.checkAuto.Location = new System.Drawing.Point(12, 70);
             this.checkAuto.Name = "checkAuto";
             this.checkAuto.Size = new System.Drawing.Size(68, 17);
             this.checkAuto.TabIndex = 5;
@@ -114,7 +114,7 @@
             // checkSteuerung
             // 
             this.checkSteuerung.AutoSize = true;
-            this.checkSteuerung.Location = new System.Drawing.Point(12, 38);
+            this.checkSteuerung.Location = new System.Drawing.Point(12, 47);
             this.checkSteuerung.Name = "checkSteuerung";
             this.checkSteuerung.Size = new System.Drawing.Size(45, 17);
             this.checkSteuerung.TabIndex = 7;
@@ -124,7 +124,7 @@
             // checkAlt
             // 
             this.checkAlt.AutoSize = true;
-            this.checkAlt.Location = new System.Drawing.Point(63, 38);
+            this.checkAlt.Location = new System.Drawing.Point(63, 47);
             this.checkAlt.Name = "checkAlt";
             this.checkAlt.Size = new System.Drawing.Size(38, 17);
             this.checkAlt.TabIndex = 8;
@@ -135,7 +135,7 @@
             // checkShift
             // 
             this.checkShift.AutoSize = true;
-            this.checkShift.Location = new System.Drawing.Point(107, 38);
+            this.checkShift.Location = new System.Drawing.Point(107, 47);
             this.checkShift.Name = "checkShift";
             this.checkShift.Size = new System.Drawing.Size(47, 17);
             this.checkShift.TabIndex = 9;
@@ -145,9 +145,9 @@
             // 
             // bKey
             // 
-            this.bKey.Location = new System.Drawing.Point(160, 34);
+            this.bKey.Location = new System.Drawing.Point(158, 43);
             this.bKey.Name = "bKey";
-            this.bKey.Size = new System.Drawing.Size(114, 23);
+            this.bKey.Size = new System.Drawing.Size(149, 23);
             this.bKey.TabIndex = 10;
             this.bKey.Text = "Key";
             this.bKey.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bAbbrechen;
-            this.ClientSize = new System.Drawing.Size(376, 272);
+            this.ClientSize = new System.Drawing.Size(320, 127);
             this.Controls.Add(this.bKey);
             this.Controls.Add(this.checkShift);
             this.Controls.Add(this.checkAlt);

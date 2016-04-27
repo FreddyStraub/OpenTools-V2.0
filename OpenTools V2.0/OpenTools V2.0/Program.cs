@@ -13,6 +13,8 @@ namespace OpenTools_V2._0
     public class Program
     {
 
+        public static bool LaunchedViaStartup { get; set; }
+
         [DllImport("Shell32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern void SHChangeNotify(uint wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
@@ -37,21 +39,30 @@ namespace OpenTools_V2._0
             //TODO: Evtl. Fenster position des alten Fenster dem neuen geben
 
             //Dateiendung registrieren
-                            
-                if (!isAsssociated())
+
+            Program.LaunchedViaStartup = args != null && args.Any(arg => arg.Equals("startup", StringComparison.CurrentCultureIgnoreCase));
+
+            if (!isAsssociated())
                     Associate();
 
                 if (args.Length == 0)
                 {
                     Application.Run(new frmMain());
 
-                }
-                else
+            }
+            else{
+                if(args[0] == "startup")
                 {
+                    Application.Run(new frmMain());
+
+                }
+                else {
                     Application.Run(new frmMain(args[0] + " " + args[1]));
 
                 }
 
+
+            }
            
         }
         public static bool isAsssociated()

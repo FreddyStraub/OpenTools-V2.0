@@ -25,5 +25,15 @@ namespace OpenTools_V2._0
             link.Save();
         }
 
+        public static void VerknüpfungErstellen(string filepath, string path, string iconpath, string target)
+        {
+            
+            WshShell shell = new WshShell();
+            IWshShortcut link = (IWshShortcut)shell.CreateShortcut(path + "\\" + System.IO.Path.GetFileNameWithoutExtension(filepath) + ".lnk");
+            link.IconLocation = iconpath;
+            link.TargetPath = filepath;
+            link.Arguments = target;
+            link.Save();
+        }
     }
 }

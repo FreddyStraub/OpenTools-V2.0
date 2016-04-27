@@ -15,6 +15,8 @@ namespace OpenTools_V2._0
 
         public bool autostart { get; set; }
 
+        public string AutostartGruppe { get; set; }
+
         //Hotkey
 
         public bool alt { get; set; }
