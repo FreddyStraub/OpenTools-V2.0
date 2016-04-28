@@ -137,6 +137,22 @@ namespace OpenTools_V2._0
                 }
             }
             #endregion
+
+
+            #region Medlung
+
+            NotifyIcon nf = new NotifyIcon();
+            //nf.Icon = new System.Drawing.Icon(Application.StartupPath + "\\logo.ico");
+            nf.Icon = new System.Drawing.Icon(Application.StartupPath + "\\logo.ico");
+            nf.Visible = true;
+
+            nf.BalloonTipIcon = ToolTipIcon.Info;
+            nf.BalloonTipText = "Der Inhalt der Toolgruppe " + name + " wurde gestartet";
+            nf.BalloonTipTitle = "OpenTools V2.0";
+
+            nf.ShowBalloonTip(1);
+
+            #endregion
         }
 
     }

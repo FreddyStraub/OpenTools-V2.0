@@ -364,8 +364,7 @@ namespace OpenTools_V2._0
 
                     if (!System.IO.File.Exists(einstellungen.path + "OpenTools V2.0\\" + textBox1.Text + ".tg"))
                     {
-
-                        
+                                                                        
                         ToolGruppe t = new ToolGruppe();
 
                         t.Dateien = Dateien;

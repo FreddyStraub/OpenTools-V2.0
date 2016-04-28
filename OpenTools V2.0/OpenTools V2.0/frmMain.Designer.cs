@@ -57,7 +57,7 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             cmsMain.Name = "cmsMain";
-            cmsMain.Size = new System.Drawing.Size(233, 98);
+            cmsMain.Size = new System.Drawing.Size(233, 76);
             // 
             // desktopverknüpfungErstellenToolStripMenuItem
             // 
