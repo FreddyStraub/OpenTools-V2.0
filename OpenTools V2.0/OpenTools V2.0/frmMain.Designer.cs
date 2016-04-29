@@ -97,6 +97,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.neuToolStripMenuItem,
             this.bearbeiToolStripMenuItem,
@@ -182,6 +183,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0";
+            this.Activated += new System.EventHandler(this.frmMain_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             cmsMain.ResumeLayout(false);

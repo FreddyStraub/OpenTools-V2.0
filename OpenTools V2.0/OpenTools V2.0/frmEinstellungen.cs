@@ -115,8 +115,6 @@ namespace OpenTools_V2._0
                 {
                     case Keys.Control:
                         break;
-                    case Keys.ControlKey:
-                        break;
                     case Keys.LControlKey:
                         break;
                     case Keys.RControlKey:

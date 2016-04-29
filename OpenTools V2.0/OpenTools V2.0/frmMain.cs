@@ -123,6 +123,8 @@ namespace OpenTools_V2._0
 
                 einstellungen = einstellungen.load();
 
+            OrdnerVerwaltung();
+
                 loadToolgruppen();
             
                 //Hotkey reloaden
@@ -194,7 +196,7 @@ namespace OpenTools_V2._0
             if(listToolgruppen.SelectedItems.Count != 0)
             {
 
-                Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\" + listToolgruppen.SelectedItem + ".tg");
+                Verknüpfung.DesktopverknüpfungErstellen(einstellungen.path + "\\OpenTools V2.0\\" + listToolgruppen.SelectedItem + ".tg");
 
             }
 
@@ -271,7 +273,6 @@ namespace OpenTools_V2._0
             einstellungen = einstellungen.load();
 
         }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             einstellungen.AutostartGruppe = null;
@@ -280,6 +281,24 @@ namespace OpenTools_V2._0
             einstellungen = einstellungen.load();
 
 
+        }
+
+        private void frmMain_Activated(object sender, EventArgs e)
+        {
+
+            string si = "";
+
+            if(listToolgruppen.SelectedItems.Count != 0)
+            {
+                si = listToolgruppen.SelectedItem.ToString();
+            }
+
+            loadToolgruppen();
+
+            try {
+                listToolgruppen.SelectedItem = listToolgruppen.Items[listToolgruppen.Items.IndexOf(si)];
+            }
+            catch { }
         }
     }
 

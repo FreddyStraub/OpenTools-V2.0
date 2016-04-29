@@ -64,6 +64,7 @@ namespace OpenTools_V2._0
         /// </summary>
         public void run()
         {
+            //Startet Elemente
             #region Dateien
 
             foreach (Datei d in Dateien)
@@ -138,7 +139,7 @@ namespace OpenTools_V2._0
             }
             #endregion
 
-
+            //Gibt dem User die Meldung, dass Toolgruppe gestartet wurde.
             #region Medlung
 
             NotifyIcon nf = new NotifyIcon();
