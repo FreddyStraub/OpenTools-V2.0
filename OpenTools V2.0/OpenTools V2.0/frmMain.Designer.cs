@@ -44,6 +44,7 @@
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbToolgruppen = new System.Windows.Forms.Label();
             this.llbWolf066LP = new System.Windows.Forms.LinkLabel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             cmsMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -106,6 +107,7 @@
             this.beendenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.ShowItemToolTips = true;
             this.menuStrip1.Size = new System.Drawing.Size(369, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
@@ -115,6 +117,7 @@
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
             this.neuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.neuToolStripMenuItem.Text = "Neu...";
+            this.neuToolStripMenuItem.ToolTipText = "Neue Toolgrupee erstellen (Strg + N)";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // bearbeiToolStripMenuItem
@@ -122,6 +125,7 @@
             this.bearbeiToolStripMenuItem.Name = "bearbeiToolStripMenuItem";
             this.bearbeiToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.bearbeiToolStripMenuItem.Text = "Bearbeiten...";
+            this.bearbeiToolStripMenuItem.ToolTipText = "Toolgrupee bearbeiten (Strg + B)";
             this.bearbeiToolStripMenuItem.Click += new System.EventHandler(this.bearbeiToolStripMenuItem_Click);
             // 
             // löschenToolStripMenuItem
@@ -129,6 +133,7 @@
             this.löschenToolStripMenuItem.Name = "löschenToolStripMenuItem";
             this.löschenToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.löschenToolStripMenuItem.Text = "Löschen";
+            this.löschenToolStripMenuItem.ToolTipText = "Toolgruppe löschen (Entf)";
             this.löschenToolStripMenuItem.Click += new System.EventHandler(this.löschenToolStripMenuItem_Click);
             // 
             // einstellungenToolStripMenuItem
@@ -136,6 +141,7 @@
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen...";
+            this.einstellungenToolStripMenuItem.ToolTipText = "Einstellungen";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             this.einstellungenToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.einstellungenToolStripMenuItem_MouseDown);
             // 
@@ -144,6 +150,7 @@
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
             this.beendenToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.beendenToolStripMenuItem.Text = "Beenden";
+            this.beendenToolStripMenuItem.ToolTipText = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
             // lbToolgruppen
@@ -177,6 +184,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
@@ -186,6 +194,7 @@
             this.Activated += new System.EventHandler(this.frmMain_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             cmsMain.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -209,6 +218,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

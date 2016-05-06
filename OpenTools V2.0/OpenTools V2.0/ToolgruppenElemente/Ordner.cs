@@ -18,7 +18,7 @@ namespace OpenTools_V2._0.ToolgruppenElemente
         public Ordner(string path)
         {
             this.path = path;
-            name = System.IO.Path.GetFileNameWithoutExtension(path);
+            name = System.IO.Path.GetFileNameWithoutExtension(path) + System.IO.Path.GetExtension(path);
         }
 
     }

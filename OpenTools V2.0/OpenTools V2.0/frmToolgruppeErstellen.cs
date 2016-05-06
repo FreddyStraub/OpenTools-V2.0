@@ -36,6 +36,7 @@ namespace OpenTools_V2._0
         private void frmToolgruppeErstellen_Load(object sender, EventArgs e)
         {
             einstellungen = einstellungen.load();
+            textBox1.Select();
         }
         private void bFertig_Click(object sender, EventArgs e)
         {
@@ -490,6 +491,51 @@ namespace OpenTools_V2._0
         private void bInternetseiteHinzufügen_Click(object sender, EventArgs e)
         {
             internetseiteHinzufügen();
+        }
+
+        private void frmToolgruppeErstellen_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Datei hinzufügen
+            if (e.Control)
+            {
+                if(e.KeyCode == Keys.D)
+                {
+                    bDateiHinzufügen.PerformClick();
+                }
+            }
+
+            //Ordner hinzufügen
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.O)
+                {
+                    bOrdnerHinzufügen.PerformClick();
+                }
+            }
+
+            //INternetseite Hinzufügen
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.I)
+                {
+                    bInternetseiteHinzufügen.PerformClick();
+                }
+            }
+
+            //LÖschen
+
+            if(e.KeyCode == Keys.Delete)
+            {
+                if(listDateien.Focused == true)
+                    bDateiEntfernen.PerformClick();
+
+                if (listOrdner.Focused == true)
+                    bOrdnerLöschen.PerformClick();
+
+                if (listInternetseiten.Focused == true)
+                    bInternetseiteLöschen.PerformClick();
+            }
+
         }
 
     }

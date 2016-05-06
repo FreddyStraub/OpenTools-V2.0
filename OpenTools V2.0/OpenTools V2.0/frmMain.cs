@@ -300,6 +300,37 @@ namespace OpenTools_V2._0
             }
             catch { }
         }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            //Hotkeys:
+
+            //Löschen
+            if(e.KeyCode == Keys.Delete)
+            {
+                löschenToolStripMenuItem.PerformClick();
+            }
+
+            //Neu
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.N)
+                {
+                    neuToolStripMenuItem.PerformClick();
+                }
+            }
+
+            //Bearbeiten
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.B)
+                {
+                    bearbeiToolStripMenuItem.PerformClick();
+                }
+            }
+
+        }
     }
 
     }

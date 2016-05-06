@@ -59,6 +59,7 @@
             this.ofdDatei = new System.Windows.Forms.OpenFileDialog();
             this.fbdOrdner = new System.Windows.Forms.FolderBrowserDialog();
             this.checkShortcut = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cmsDateien.SuspendLayout();
             this.cmsOrdner.SuspendLayout();
             this.cmsInternetseiten.SuspendLayout();
@@ -240,6 +241,7 @@
             this.bDateiHinzufügen.Size = new System.Drawing.Size(75, 23);
             this.bDateiHinzufügen.TabIndex = 10;
             this.bDateiHinzufügen.Text = "Hinzufügen";
+            this.toolTip1.SetToolTip(this.bDateiHinzufügen, "Datei hinzufügen (Strg + D)");
             this.bDateiHinzufügen.UseVisualStyleBackColor = true;
             this.bDateiHinzufügen.Click += new System.EventHandler(this.bDateiHinzufügen_Click);
             // 
@@ -250,6 +252,7 @@
             this.bDateiEntfernen.Size = new System.Drawing.Size(75, 23);
             this.bDateiEntfernen.TabIndex = 11;
             this.bDateiEntfernen.Text = "Entfernen";
+            this.toolTip1.SetToolTip(this.bDateiEntfernen, "Datei löschen (Entf)");
             this.bDateiEntfernen.UseVisualStyleBackColor = true;
             this.bDateiEntfernen.Click += new System.EventHandler(this.bDateiEntfernen_Click);
             // 
@@ -260,6 +263,7 @@
             this.bOrdnerLöschen.Size = new System.Drawing.Size(75, 23);
             this.bOrdnerLöschen.TabIndex = 13;
             this.bOrdnerLöschen.Text = "Entfernen";
+            this.toolTip1.SetToolTip(this.bOrdnerLöschen, "Ordner löschen (Entf)");
             this.bOrdnerLöschen.UseVisualStyleBackColor = true;
             this.bOrdnerLöschen.Click += new System.EventHandler(this.bOrdnerLöschen_Click);
             // 
@@ -270,6 +274,7 @@
             this.bOrdnerHinzufügen.Size = new System.Drawing.Size(75, 23);
             this.bOrdnerHinzufügen.TabIndex = 12;
             this.bOrdnerHinzufügen.Text = "Hinzufügen";
+            this.toolTip1.SetToolTip(this.bOrdnerHinzufügen, "Ordner hinzufügen (Strg + O)");
             this.bOrdnerHinzufügen.UseVisualStyleBackColor = true;
             this.bOrdnerHinzufügen.Click += new System.EventHandler(this.bOrdnerHinzufügen_Click);
             // 
@@ -280,6 +285,7 @@
             this.bInternetseiteLöschen.Size = new System.Drawing.Size(75, 23);
             this.bInternetseiteLöschen.TabIndex = 15;
             this.bInternetseiteLöschen.Text = "Entfernen";
+            this.toolTip1.SetToolTip(this.bInternetseiteLöschen, "Internetseite löschen (Entf)");
             this.bInternetseiteLöschen.UseVisualStyleBackColor = true;
             // 
             // bInternetseiteHinzufügen
@@ -289,6 +295,7 @@
             this.bInternetseiteHinzufügen.Size = new System.Drawing.Size(75, 23);
             this.bInternetseiteHinzufügen.TabIndex = 14;
             this.bInternetseiteHinzufügen.Text = "Hinzufügen";
+            this.toolTip1.SetToolTip(this.bInternetseiteHinzufügen, "Internetseite hinzufügen (Strg + I)");
             this.bInternetseiteHinzufügen.UseVisualStyleBackColor = true;
             this.bInternetseiteHinzufügen.Click += new System.EventHandler(this.bInternetseiteHinzufügen_Click);
             // 
@@ -340,11 +347,13 @@
             this.Controls.Add(this.bFertig);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmToolgruppeErstellen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0 - Toolgruppe erstellen";
             this.Load += new System.EventHandler(this.frmToolgruppeErstellen_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmToolgruppeErstellen_KeyDown);
             this.cmsDateien.ResumeLayout(false);
             this.cmsOrdner.ResumeLayout(false);
             this.cmsInternetseiten.ResumeLayout(false);
@@ -386,5 +395,6 @@
         private System.Windows.Forms.OpenFileDialog ofdDatei;
         private System.Windows.Forms.FolderBrowserDialog fbdOrdner;
         private System.Windows.Forms.CheckBox checkShortcut;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
