@@ -11,4 +11,6 @@ OpenTools V2.0 beinhaltet die gleichen Features wie V1.0
 Der große Unterschied dabei ist, dass man nun auch die Möglichkeit hat zu bestimmen welches Fenster an welcher stelle aufgehen soll!
 Zusätzlich kann man sich nun auch Shortcuts der Toolgruppen auf den Desktop legen.
 
+Wie geht was? Und vieles Mehr --> Wiki --> https://github.com/FreddyStraub/OpenTools-V2.0/wiki/OpenTools
+
 Tutorial folgt sobald das Tool fertig is xD
