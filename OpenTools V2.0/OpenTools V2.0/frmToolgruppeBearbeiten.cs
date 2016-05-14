@@ -471,5 +471,10 @@ namespace OpenTools_V2._0
             }
 
         }
+
+        private void frmToolgruppeBearbeiten_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

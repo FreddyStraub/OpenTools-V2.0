@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Associations;
+using Microsoft.Win32;
+using Org.Mentalis.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,14 +40,12 @@ namespace OpenTools_V2._0
 
             //TODO: Evtl. Fenster position des alten Fenster dem neuen geben
 
-            //Dateiendung registrieren
 
             Program.LaunchedViaStartup = args != null && args.Any(arg => arg.Equals("startup", StringComparison.CurrentCultureIgnoreCase));
 
-            if (!isAsssociated())
-                    Associate();
+            SetAssociation(".tg", "Toolgruppe", Application.ExecutablePath, "OpenTools V2.0 - Toolgruppe", Application.StartupPath + "\\ToolgruppeIcon.ico");
 
-                if (args.Length == 0)
+            if (args.Length == 0)
                 {
                     Application.Run(new frmMain());
 
@@ -65,32 +65,35 @@ namespace OpenTools_V2._0
             }
            
         }
-        public static bool isAsssociated()
+        public static void SetAssociation(string Extension, string KeyName, string OpenWith, string FileDescription, string iconpath)
         {
-            return (Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.tg", false) == null);
-        }
+            RegistryKey BaseKey;
+            RegistryKey OpenMethod;
+            RegistryKey Shell;
+            RegistryKey CurrentUser;
 
-        static RegistryKey fileReg = Registry.CurrentUser.CreateSubKey("Software\\Classes\\.tg");
-        static RegistryKey appReg = Registry.CurrentUser.CreateSubKey("Software\\Classes\\Applications\\OpenTools V2.0.exe\\Explorer\\.tg");
-        static RegistryKey appAsoc = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.tg");
+            BaseKey = Registry.ClassesRoot.CreateSubKey(Extension);
+            BaseKey.SetValue("", KeyName);
 
-        public static void Associate()
-        {
+            OpenMethod = Registry.ClassesRoot.CreateSubKey(KeyName);
+            OpenMethod.SetValue("", FileDescription);
+            OpenMethod.CreateSubKey("DefaultIcon").SetValue("", "\"" + iconpath + "\",0");
+            Shell = OpenMethod.CreateSubKey("Shell");
+            Shell.CreateSubKey("edit").CreateSubKey("command").SetValue("", "\"" + OpenWith + "\"" + " \"%1\"");
+            Shell.CreateSubKey("open").CreateSubKey("command").SetValue("", "\"" + OpenWith + "\"" + " \"%1\"");
+            BaseKey.Close();
+            OpenMethod.Close();
+            Shell.Close();
 
+            //CurrentUser = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.arrr", true);
+            //CurrentUser.DeleteSubKey("UserChoice", false);
+            //CurrentUser.Close();
 
-            fileReg.CreateSubKey("DefaultIcon").SetValue("", Application.StartupPath + "\\ToolgruppeIcon.ico");
-            fileReg.CreateSubKey("PreceivedType").SetValue("", "Toolgrupe");
-
-            appReg.CreateSubKey("shell\\open\\command").SetValue("", "\"" + Application.ExecutablePath + "\" %1");
-            appReg.CreateSubKey("shell\\edit\\command").SetValue("", "\"" + Application.ExecutablePath + "\" %1");
-            appReg.CreateSubKey("DefaultIcon").SetValue("", Application.StartupPath + "\\ToolgruppeIcon.ico");
-
-            appAsoc.CreateSubKey("UserChoice").SetValue("Progid", "Applications\\OpenTools V2.0.exe");
+            // Tell explorer the file association has been changed
             SHChangeNotify(0x08000000, 0x0000, IntPtr.Zero, IntPtr.Zero);
-
-
         }
+    }
 
 
     }
-}
+

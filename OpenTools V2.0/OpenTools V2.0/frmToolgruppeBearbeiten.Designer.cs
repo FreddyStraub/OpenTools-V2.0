@@ -334,6 +334,7 @@
             this.Name = "frmToolgruppeBearbeiten";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0 - Bearbeiten";
+            this.Load += new System.EventHandler(this.frmToolgruppeBearbeiten_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmToolgruppeBearbeiten_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
