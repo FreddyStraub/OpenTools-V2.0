@@ -45,7 +45,6 @@
             this.lbToolgruppen = new System.Windows.Forms.Label();
             this.llbWolf066LP = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             cmsMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -174,21 +173,11 @@
             this.llbWolf066LP.Text = "by Wolf066LP";
             this.llbWolf066LP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWolf066LP_LinkClicked);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(115, 156);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 269);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.llbWolf066LP);
             this.Controls.Add(this.lbToolgruppen);
             this.Controls.Add(this.listToolgruppen);
@@ -230,7 +219,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
