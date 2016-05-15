@@ -66,8 +66,6 @@ namespace OpenTools_V2._0
 
             //Autpstart Gruppe
 
-            //if (Application.StartupPath == "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp")
-            //    {
             if (Program.LaunchedViaStartup)
 
             {
