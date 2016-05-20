@@ -351,19 +351,17 @@ namespace OpenTools_V2._0
         {
 
             int n = 0;
-            while (listOrdner.SelectedItems.Count != 0)
+            while (listInternetseiten.SelectedItems.Count != 0)
             {
 
-                foreach (string s in listInternetseiten.SelectedItems)
-                {
+                string s = listInternetseiten.SelectedItems[n].ToString();
+                Internetseiten.Remove((Internetseiten[listInternetseiten.Items.IndexOf(s)]));
+                listInternetseiten.Items.Remove(s);
 
-                    Internetseiten.Remove(Internetseiten[listInternetseiten.Items.IndexOf(s)]);
-                    listInternetseiten.Items.Remove(s);
-                    n++;
-
-                }
+                n++;
 
             }
+
 
 
         }
@@ -538,5 +536,14 @@ namespace OpenTools_V2._0
 
         }
 
+        private void bInternetseiteLöschen_Click(object sender, EventArgs e)
+        {
+            internetseiteLöschen();
+        }
+
+        private void hinzufügenToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            internetseiteHinzufügen();
+        }
     }
 }

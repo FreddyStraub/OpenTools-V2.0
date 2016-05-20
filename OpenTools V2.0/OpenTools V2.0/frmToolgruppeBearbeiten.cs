@@ -263,23 +263,21 @@ namespace OpenTools_V2._0
         {
 
             int n = 0;
-            while (listOrdner.SelectedItems.Count != 0)
+            while (listInternetseiten.SelectedItems.Count != 0)
             {
 
-                foreach (string s in listInternetseiten.SelectedItems)
-                {
+                string s = listInternetseiten.SelectedItems[n].ToString();
+                Internetseiten.Remove((Internetseiten[listInternetseiten.Items.IndexOf(s)]));
+                listInternetseiten.Items.Remove(s);
 
-                    Internetseiten.Remove(Internetseiten[listInternetseiten.Items.IndexOf(s)]);
-                    listInternetseiten.Items.Remove(s);
-                    n++;
-
-                }
+                n++;
 
             }
 
 
+
         }
-        
+
         /// <summary>
         /// Fügt eine Internetseite hinzu.
         /// </summary>

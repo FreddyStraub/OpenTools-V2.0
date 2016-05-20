@@ -117,7 +117,7 @@
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
             this.neuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.neuToolStripMenuItem.Text = "Neu...";
-            this.neuToolStripMenuItem.ToolTipText = "Neue Toolgrupee erstellen (Strg + N)";
+            this.neuToolStripMenuItem.ToolTipText = "Neue Toolgruppe erstellen (Strg + N)";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // bearbeiToolStripMenuItem
@@ -125,7 +125,7 @@
             this.bearbeiToolStripMenuItem.Name = "bearbeiToolStripMenuItem";
             this.bearbeiToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.bearbeiToolStripMenuItem.Text = "Bearbeiten...";
-            this.bearbeiToolStripMenuItem.ToolTipText = "Toolgrupee bearbeiten (Strg + B)";
+            this.bearbeiToolStripMenuItem.ToolTipText = "Toolgruppe bearbeiten (Strg + B)";
             this.bearbeiToolStripMenuItem.Click += new System.EventHandler(this.bearbeiToolStripMenuItem_Click);
             // 
             // löschenToolStripMenuItem

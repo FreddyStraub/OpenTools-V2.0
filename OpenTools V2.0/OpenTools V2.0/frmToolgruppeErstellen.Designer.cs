@@ -201,18 +201,19 @@
             this.hinzufügenToolStripMenuItem2,
             this.entfernenToolStripMenuItem2});
             this.cmsInternetseiten.Name = "cmsDateien";
-            this.cmsInternetseiten.Size = new System.Drawing.Size(137, 48);
+            this.cmsInternetseiten.Size = new System.Drawing.Size(153, 70);
             // 
             // hinzufügenToolStripMenuItem2
             // 
             this.hinzufügenToolStripMenuItem2.Name = "hinzufügenToolStripMenuItem2";
-            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
+            this.hinzufügenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.hinzufügenToolStripMenuItem2.Text = "Hinzufügen";
+            this.hinzufügenToolStripMenuItem2.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem2_Click_1);
             // 
             // entfernenToolStripMenuItem2
             // 
             this.entfernenToolStripMenuItem2.Name = "entfernenToolStripMenuItem2";
-            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(136, 22);
+            this.entfernenToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.entfernenToolStripMenuItem2.Text = "Entfernen";
             this.entfernenToolStripMenuItem2.Click += new System.EventHandler(this.entfernenToolStripMenuItem2_Click);
             // 
@@ -287,6 +288,7 @@
             this.bInternetseiteLöschen.Text = "Entfernen";
             this.toolTip1.SetToolTip(this.bInternetseiteLöschen, "Internetseite löschen (Entf)");
             this.bInternetseiteLöschen.UseVisualStyleBackColor = true;
+            this.bInternetseiteLöschen.Click += new System.EventHandler(this.bInternetseiteLöschen_Click);
             // 
             // bInternetseiteHinzufügen
             // 
