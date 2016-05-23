@@ -42,19 +42,18 @@ namespace OpenTools_V2._0
 
             Program.LaunchedViaStartup = args != null && args.Any(arg => arg.Equals("startup", StringComparison.CurrentCultureIgnoreCase));
 
-
             if (args.Length == 0)
                 {
                     Application.Run(new frmMain());
 
             }
-            else{
-                if(args[0] == "startup")
+            else if(args[0] == "startup")
                 {
                     Application.Run(new frmMain());
 
                 }
                 else {
+                    
                     Application.Run(new frmMain(args[0] + " " + args[1]));
 
                 }
@@ -63,8 +62,5 @@ namespace OpenTools_V2._0
             }
            
         }
-    }
-
-
     }
 
