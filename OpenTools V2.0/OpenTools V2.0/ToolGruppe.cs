@@ -99,9 +99,11 @@ namespace OpenTools_V2._0
             #region Ordner
             foreach (Ordner o in Ordner)
             {
+                WindowManager wm = new WindowManager();
+
                 try {
                     //Startet den Ordner
-                    WindowManager wm = new WindowManager();
+
                     Process p = new Process();
                     p.StartInfo = new ProcessStartInfo(o.path);
                     p.Start();
@@ -109,19 +111,21 @@ namespace OpenTools_V2._0
                     Thread.Sleep(150);
 
 
-                    IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
-
-                    //Schiebt das Fenster an die passende Position
-                    wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
-
                 }
                 catch
                 {
 
                     MessageBox.Show("Der Ordner " + o.path + " konnte nicht geöffnet werden!", "OpenTools V2.0", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
                 }
+
+                try {
+                    IntPtr Handle = wm.getFolderHandle(o.path); //Handler des Explorerfensteres mit dem passenen Ordner
+
+                    //Schiebt das Fenster an die passende Position
+                    wm.moveWindow(Handle, o.WindowSettings.winPos.x, o.WindowSettings.winPos.y, o.WindowSettings.winSize.x, o.WindowSettings.winSize.y);
+                }
+                catch { }
             }
 
             #endregion

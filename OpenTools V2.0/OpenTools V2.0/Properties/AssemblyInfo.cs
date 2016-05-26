@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("OpenTools V2.0")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("OpenTools ist ein Tool um Programme, Ordner und Internetseiten zu verwalten")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Wolf066LP")]
 [assembly: AssemblyProduct("OpenTools V2.0")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

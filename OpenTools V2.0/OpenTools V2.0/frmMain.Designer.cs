@@ -45,6 +45,7 @@
             this.lbToolgruppen = new System.Windows.Forms.Label();
             this.llbWolf066LP = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lbCopyRight = new System.Windows.Forms.Label();
             cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             cmsMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -173,11 +174,22 @@
             this.llbWolf066LP.Text = "by Wolf066LP";
             this.llbWolf066LP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWolf066LP_LinkClicked);
             // 
+            // lbCopyRight
+            // 
+            this.lbCopyRight.AutoSize = true;
+            this.lbCopyRight.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbCopyRight.Location = new System.Drawing.Point(16, 249);
+            this.lbCopyRight.Name = "lbCopyRight";
+            this.lbCopyRight.Size = new System.Drawing.Size(90, 13);
+            this.lbCopyRight.TabIndex = 5;
+            this.lbCopyRight.Text = "Copyright © 2016";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 269);
+            this.Controls.Add(this.lbCopyRight);
             this.Controls.Add(this.llbWolf066LP);
             this.Controls.Add(this.lbToolgruppen);
             this.Controls.Add(this.listToolgruppen);
@@ -219,6 +231,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lbCopyRight;
     }
 }
 
