@@ -59,7 +59,15 @@ namespace OpenTools_V2._0
             }
             else
             {
-                Application.Run(new frmMain(args[0] + " " + args[1]));
+
+                string openpath = args[0];
+                foreach(string s in args)
+                {
+                    if(s != args[0])
+                        openpath += " " + s;
+                }
+
+                Application.Run(new frmMain(openpath));
 
             }
 
