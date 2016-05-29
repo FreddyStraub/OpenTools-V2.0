@@ -470,9 +470,49 @@ namespace OpenTools_V2._0
 
         }
 
-        private void frmToolgruppeBearbeiten_Load(object sender, EventArgs e)
+
+        #region Drag and Drop
+
+        //Dateien:
+        private void listDateien_DragDrop(object sender, DragEventArgs e)
         {
+            string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
+            foreach (string s in files)
+            {
+                dateiHinzufügen(s);
+            }
+
 
         }
+
+        private void listDateien_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+
+
+        }
+
+        //Ordner:
+        private void listOrdner_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])(e.Data.GetData(DataFormats.FileDrop));
+            foreach (string s in files)
+            {
+                ordnerHinzufügen(s);
+            }
+
+        }
+
+        private void listOrdner_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+
+
+
+        }
+
+        #endregion
     }
 }

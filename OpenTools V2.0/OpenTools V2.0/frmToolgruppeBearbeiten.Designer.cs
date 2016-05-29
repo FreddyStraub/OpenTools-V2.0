@@ -113,6 +113,8 @@
             this.listDateien.Name = "listDateien";
             this.listDateien.Size = new System.Drawing.Size(213, 212);
             this.listDateien.TabIndex = 4;
+            this.listDateien.DragDrop += new System.Windows.Forms.DragEventHandler(this.listDateien_DragDrop);
+            this.listDateien.DragEnter += new System.Windows.Forms.DragEventHandler(this.listDateien_DragEnter);
             // 
             // cmsDateien
             // 
@@ -156,6 +158,8 @@
             this.listOrdner.Name = "listOrdner";
             this.listOrdner.Size = new System.Drawing.Size(213, 212);
             this.listOrdner.TabIndex = 6;
+            this.listOrdner.DragDrop += new System.Windows.Forms.DragEventHandler(this.listOrdner_DragDrop);
+            this.listOrdner.DragEnter += new System.Windows.Forms.DragEventHandler(this.listOrdner_DragEnter);
             // 
             // cmsOrdner
             // 
@@ -334,7 +338,6 @@
             this.Name = "frmToolgruppeBearbeiten";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenTools V2.0 - Bearbeiten";
-            this.Load += new System.EventHandler(this.frmToolgruppeBearbeiten_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmToolgruppeBearbeiten_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
