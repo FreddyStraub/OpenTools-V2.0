@@ -14,4 +14,6 @@ Zusätzlich kann man sich nun auch Shortcuts der Toolgruppen auf den Desktop leg
 Wie geht was? Und vieles Mehr --> Wiki --> https://github.com/FreddyStraub/OpenTools-V2.0/wiki/OpenTools
 
 Trailer --> https://www.youtube.com/watch?v=LQpu3WupnDc
+
+
 Tutorial --> https://www.youtube.com/watch?v=YpI0-Jd18S4
